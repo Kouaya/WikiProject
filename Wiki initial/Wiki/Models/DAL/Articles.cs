@@ -23,7 +23,8 @@ namespace Wiki.Models.DAL {
                     cnx.Open();
                     cmd.Parameters.Add("Titre", SqlDbType.NVarChar).Value = a.Titre;
                     cmd.Parameters.Add("Contenu", SqlDbType.NVarChar).Value = a.Contenu;
-                    cmd.Parameters.Add("IdContributeur", SqlDbType.Int).Value = a.IdContributeur;
+                    //cmd.Parameters.Add("IdContributeur", SqlDbType.Int).Value = a.IdContributeur;
+                    cmd.Parameters.Add("IdContributeur", SqlDbType.Int).Value = 1;
 
                     return cmd.ExecuteNonQuery(); ;
                 }

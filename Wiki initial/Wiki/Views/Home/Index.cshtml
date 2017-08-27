@@ -1,19 +1,19 @@
 ﻿@model Wiki.Models.Biz.Article
 
 @{
-    ViewBag.Title = "Ajouter";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-@using (Html.BeginForm("ajouter","DAL",FormMethod.Post)) 
-{
+<h2>Bienvenue!</h2>
+<hr />
+@using(Html.BeginForm("consulter", "Home", FormMethod.Post)) {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Article</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group">
             @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -22,24 +22,11 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contenu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Contenu, new { @style = "width:280px;height:60px" })
-                @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-       
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Enregistrer" class="btn btn-default" />
+                <input type="submit" value="Consulter" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Annuler", "Index")
-</div>

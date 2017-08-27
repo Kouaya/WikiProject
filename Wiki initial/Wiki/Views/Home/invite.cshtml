@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "invite";
+
+    Layout = null;
+}
+
+<h2>L'article @ViewBag.TitreArticle est inexistant.Cliquez @Html.ActionLink("ici", "ajouter", new { Titre = @ViewBag.TitreArticle }) pour le créer.</h2>
+
+
+@{
+    ViewBag.Title = "invite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+

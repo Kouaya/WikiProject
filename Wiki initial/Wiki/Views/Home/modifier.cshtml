@@ -7,10 +7,9 @@
 
 <h2>modifier</h2>
 
-@using (Html.BeginForm("modifier","DAL",FormMethod.Post))
-{
+@using(Html.BeginForm("modifier", "Home", FormMethod.Post)) {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Article</h4>
         <hr />

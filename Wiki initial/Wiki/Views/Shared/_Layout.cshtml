@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,7 +16,17 @@
             <br /><br />
             <div class="col-sm-3 sidenav">
                 @RenderSection("gauche", required: false)
-            </div>
+                <h3><span style="color:red">Table de Matières</span></h3>
+
+                @foreach(string item in @ViewBag.TitleList) {
+                
+                    <ul>
+                        <li>@Html.ActionLink(item, "Index", new {Titre = item})</li>
+                    </ul>
+                    
+                }
+               
+         </div>
             <div class="col-sm-9">
                 @RenderBody()
             </div>

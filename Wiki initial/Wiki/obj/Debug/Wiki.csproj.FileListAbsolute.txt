@@ -76,3 +76,81 @@ C:\Users\LABORATOIRE\Documents\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.W
 C:\Users\LABORATOIRE\Documents\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.csprojResolveAssemblyReference.cache
 C:\Users\LABORATOIRE\Documents\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.dll
 C:\Users\LABORATOIRE\Documents\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.pdb
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Wiki.dll.config
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Wiki.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Wiki.pdb
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Antlr3.Runtime.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\EntityFramework.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Newtonsoft.Json.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Helpers.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Mvc.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Optimization.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Razor.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Deployment.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Razor.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\WebGrease.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Antlr3.Runtime.pdb
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\EntityFramework.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\Newtonsoft.Json.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Helpers.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Mvc.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Optimization.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.Razor.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Deployment.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\EntityFramework.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Helpers.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Mvc.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Optimization.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Razor.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.Deployment.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.Razor.resources.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.dll
+C:\Users\User\Desktop\TPWIKI\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.pdb
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Wiki.dll.config
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Wiki.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Wiki.pdb
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Antlr3.Runtime.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\EntityFramework.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\EntityFramework.SqlServer.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Microsoft.Web.Infrastructure.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Newtonsoft.Json.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Helpers.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Mvc.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Optimization.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Razor.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Deployment.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Razor.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\WebGrease.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Antlr3.Runtime.pdb
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\EntityFramework.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\EntityFramework.SqlServer.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\Newtonsoft.Json.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Helpers.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Mvc.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Optimization.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.Razor.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Deployment.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\System.Web.WebPages.Razor.xml
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\EntityFramework.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\EntityFramework.SqlServer.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Helpers.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Mvc.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Optimization.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.Razor.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.Deployment.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\bin\fr\System.Web.WebPages.Razor.resources.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.csprojResolveAssemblyReference.cache
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.dll
+G:\MAISONNEUVE\AUTOMNE_2017\Programmation web II\TP\Tp1\WikiProject\Wiki initial\Wiki\obj\Debug\Wiki.pdb

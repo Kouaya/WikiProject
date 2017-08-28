@@ -13,24 +13,61 @@ namespace Wiki.Models.DAL
 {
     public class Articles
     {
-        // Auteurs:
+        // Auteurs: Hilaire Tchakote
         public int Add(Article a)
         {
-            return 0;
+            int nbEnregistrement;            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "INSERT INTO Articles (Titre, Contenu, Revision, IdContributeur, DateModification) VALUES('" + a.Titre + "','" + a.Contenu + "', " + a.Revision + ", " + a.IdContributeur + ",'" + a.DateModification + "')";
+                //string requete = "GetTitresArticles";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();                    
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;
         }
 
         // Auteurs:
         public Article Find(string titre)
         {
-            return null;
+            Article unArticle = new Article();            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                //string requete = "GetTitresArticles";                   // Stored procedures
+                string requete = "SELECT * FROM Articles WHERE Titre='"+titre+"'";
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
+                try {
+                   
+                    cnx.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    dataReader.Read();
+                    unArticle.Titre = (string)dataReader["Titre"];
+                    unArticle.Revision = (int)dataReader["Revision"];
+                    unArticle.IdContributeur = (int)dataReader["IdContributeur"];
+                    unArticle.Contenu = (string)dataReader["Contenu"];
+                    unArticle.DateModification = (DateTime)dataReader["DateModification"];
+                    dataReader.Close();                   
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return unArticle;
         }
 
 
         // Auteurs: Vincent Simard, Phan Ngoc Long Denis, Floyd Ducharme, Pierre-Olivier Morin
         public IList<string> GetTitres()
-        {
-            string cStr = ConfigurationManager.ConnectionStrings["Wiki"].ConnectionString;
-            using (SqlConnection cnx = new SqlConnection(cStr))
+        {            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString))
             {
                 string requete = "GetTitresArticles";                   // Stored procedures
                 SqlCommand cmd = new SqlCommand(requete, cnx);
@@ -39,14 +76,14 @@ namespace Wiki.Models.DAL
                 {
                     cnx.Open();
                     SqlDataReader dataReader = cmd.ExecuteReader();
-                    IList<string> ListeTitre = new List<string>();
+                    List<string> ListeTitre = new List<string>();
                     while (dataReader.Read())
                     {
                         string t = (string)dataReader["Titre"];
                         ListeTitre.Add(t);
-                    }
+                    }                   
                     dataReader.Close();
-
+                    ListeTitre.Sort();
                     return ListeTitre;
                 }
                 finally
@@ -58,7 +95,7 @@ namespace Wiki.Models.DAL
 
         // Auteurs: Alexandre, Vincent, William et Nicolas
         public IList<Article> GetArticles()
-        {
+        {            
             using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -68,7 +105,7 @@ namespace Wiki.Models.DAL
 
                 try
                 {
-                    var dataReader = cmd.ExecuteReader();
+                    var dataReader = cmd.ExecuteReader();                    
                     var articles = new List<Article>();
 
                     while (dataReader.Read())
@@ -93,26 +130,53 @@ namespace Wiki.Models.DAL
             }
         }
 
-
-        // Auteurs:
+        // Auteurs: Hilaire Tchakote
         public int Update(Article a)
         {
-            return 0;
+            int revision = Find(a.Titre).Revision;//recupération du no de révision de l'article
+            int nbRevision = revision + 1;//incrémentation du nombre de révision
+            int nbEnregistrement;            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "UPDATE Article SET Contenu='" + a.Contenu + "', Revision=" + nbRevision + " WHERE Titre="+a.Titre;
+                //string requete = "GetTitresArticles";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;
         }
 
-
-
-        // Auteurs:
+        // Auteurs: hilaire Tchakote
         public int Delete(string titre)
         {
-            return 0;
+            int nbEnregistrement;            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "DELETE FROM Articles WHERE Titre='"+titre+"'";
+                //string requete = "GetTitresArticles";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.Text;
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;            
         }
-
-
 
         private string ConnectionString
         {
-            get { return ConfigurationManager.ConnectionStrings["Wiki"].ConnectionString; }
+            get { return ConfigurationManager.ConnectionStrings["WikiCon"].ConnectionString; }
         }
 
     }

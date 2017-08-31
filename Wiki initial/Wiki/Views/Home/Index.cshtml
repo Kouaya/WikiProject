@@ -8,17 +8,17 @@
 
 @if (ViewBag.Status == "null")
 {
-    <center><h2>@StringsShared.Bienvenue</h2></center>
+    <center><h2>Bienvenue</h2></center>
     <hr>
 
     <p>
-        @StringsShared.Intro
+        Intro
     </p>
 
     <form action="/Home/index" method="get">
-        <label for="txtNomArticle">@StringsShared.FormRechercher</label>
+        <label for="txtNomArticle">nom</label>
         <input type="text" name="id" id="id" />
-        <input type="submit" value="@StringsShared.FormSubmit" />
+        <input type="submit" value="Envoyer" />
     </form>
 }
 
@@ -28,30 +28,30 @@
     <hr />
 
 
-    <p>@StringsShared.LabelTitre : <br />@Html.DisplayFor(model => model.Titre)</p>
+    <p>Titre : <br />@Html.DisplayFor(model => model.Titre)</p>
     <br />
-    <p>@StringsShared.LabelContenu : <br />@Html.Raw(Model.Contenu)</p>
+    <p>Contenu : <br />@Html.Raw(Model.Contenu)</p>
     <br />
-    <p>@StringsShared.LabelDateModification :<br /> @Html.DisplayFor(model => @model.DateModification)</p>
+    <p>Date  modif :<br /> @Html.DisplayFor(model => @model.DateModification)</p>
     <br />
-    <p>@StringsShared.LabelRevision : <br />@Html.DisplayFor(model => model.Revision)</p>
+    <p>Révision no: <br />@Html.DisplayFor(model => model.Revision)</p>
     <br />
-    <p>@StringsShared.LabelContributeur : <br />@Html.DisplayFor(model => model.IdContributeur)</p>
+    <p>Contributeur: <br />@Html.DisplayFor(model => model.IdContributeur)</p>
 
     <hr />
     if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink(@StringsShared.LienModifier, "Edit", "Home", new { id = Model.Titre }, new { @class = "classname" })
+        @Html.ActionLink("Modifier", "Edit", "Home", new { id = Model.Titre }, new { @class = "classname" })
         <text>&nbsp; &nbsp;</text>
-        @Html.ActionLink(@StringsShared.LienEffacer, "Delete", "Home", new { id = Model.Titre }, new { @class = "classname" })
+        @Html.ActionLink("Effacer", "Delete", "Home", new { id = Model.Titre }, new { @class = "classname" })
     }
     else
     {
-        @Html.ActionLink(@StringsShared.LienConnexion, "Connexion", "Utilisateurs")
+        @Html.ActionLink("Connexion", "Connexion", "Utilisateurs")
 
     }
     <text>&nbsp; &nbsp;</text>
-    @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)
+    @Html.ActionLink("Accueil", "Index", "Home", new { id = "" }, null)
 
 
 }
@@ -59,11 +59,11 @@
 
 @if (ViewBag.Status == "else")
 {
-    <h2>@StringsShared.ArticleInexistant</h2>
+    <h2>ArticleInexistant</h2>
 
     if (User.Identity.IsAuthenticated)
     {
-        <p>@StringsShared.ArticleCreer</p>
+        <p>ArticleCreer</p>
     }
 
     <br />
@@ -71,14 +71,14 @@
 
     if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink(@StringsShared.LienCreer, "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })
+        @Html.ActionLink("Créer", "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })
     }
     else
     {
-        @Html.ActionLink(@StringsShared.ConnexionCompte, "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })
+        @Html.ActionLink("Connexion", "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })
     }
     <text>&nbsp; &nbsp;</text>
-    @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)
+    @Html.ActionLink("Accueil", "Index", "Home", new { id = "" }, null)
 
 
 

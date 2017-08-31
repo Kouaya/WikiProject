@@ -12,7 +12,7 @@ namespace Wiki.Controllers
 {
     public class DALController : Controller
     {
-        Articles repo = new Articles();
+        //Articles repo = new Articles();
 
         [ValidateInput(false)]
         public ActionResult Index(String operation, Article a)
@@ -24,7 +24,7 @@ namespace Wiki.Controllers
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
-                    a = repo.Find(a.Titre);
+                    a = Articles.Find(a.Titre);
                     if (a == null)
                     {
                         return HttpNotFound();
@@ -35,22 +35,22 @@ namespace Wiki.Controllers
                     if (ModelState.IsValid)
                     {
                         a.IdContributeur = 1;
-                        repo.Update(a);
+                        Articles.Update(a);
                     }
                     break;
                 case "Add":
                     if (ModelState.IsValid)
                     {
                         a.IdContributeur = 1;
-                        repo.Add(a);
+                        Articles.Add(a);
                     }
                     break;
                 case "Delete":
-                    repo.Delete(a.Titre);
+                    Articles.Delete(a.Titre);
                     break;
             }
 
-            return View(repo.GetArticles());
+            return View(Articles.GetArticles());
         }
      
     }

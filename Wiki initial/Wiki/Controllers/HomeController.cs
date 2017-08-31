@@ -46,7 +46,6 @@ namespace Wiki.Controllers
 
         // GET: Article/Create
         [HttpGet]
-        [Authorize]
         public ActionResult Create()
         {
             Article newArticle = new Article();
@@ -55,8 +54,6 @@ namespace Wiki.Controllers
 
         // POST: Home/Create
         [HttpPost]
-        [Authorize]
-        [ValidateInput(false)]  //HTML RAW PARAM
         public ActionResult Create(Article newArticle)
         {
 
@@ -74,9 +71,8 @@ namespace Wiki.Controllers
             }
         }
 
-        // GET: Article/Edit/5
+        // GET: Article/Edit
         [HttpGet]
-        [Authorize]
         public ActionResult Edit(string id)
         {
             Article a = new Article();
@@ -86,10 +82,8 @@ namespace Wiki.Controllers
             return View(toEdit);
         }
 
-        // POST: Article/Edit/5
+        // POST: Article/Edit
         [HttpPost]
-        [Authorize]
-        [ValidateInput(false)]  //HTML RAW PARAM
         public ActionResult Edit(string id, Article toEdit)
         {
             if (ModelState.IsValid)
@@ -104,18 +98,16 @@ namespace Wiki.Controllers
             }
         }
 
-        // GET: Article/Delete/5
+        // GET: Article/Delete
         [HttpGet]
-        [Authorize]
         public ActionResult Delete(string id)
         {
             Article toDelete = Articles.Find(id);
             return View(toDelete);
         }
 
-        // POST: Article/Delete/5
+        // POST: Article/Delete
         [HttpPost]
-        [Authorize]
         public ActionResult Delete(string id, FormCollection collection)
         {
             Articles.Delete(id);

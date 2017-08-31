@@ -57,16 +57,21 @@ namespace Wiki.Controllers
         }
 
         [HttpPost]
-        public ActionResult ajouter(Article article) {
+        public ActionResult ajouter(Article article, string Enregistrer,string Apercu) {
             Articles repo = new Articles();
             IList<string> TitlestList = repo.GetTitres();
             ViewBag.TitleList = TitlestList;
-            //Articles repo = new Articles();
-            int num = repo.Add(article);
+            ViewBag.Contenu = article.Contenu;
+            if(!string.IsNullOrEmpty(Enregistrer)) {
+                int num = repo.Add(article);
+            }
+            if(!string.IsNullOrEmpty(Apercu)) {
+                
+            }
             return View(article);
         }
 
-
+       
         [HttpGet]
         public ActionResult modifier(string titre) {
             IList<string> TitlestList = repo.GetTitres();
@@ -75,7 +80,7 @@ namespace Wiki.Controllers
             return View(article);
         }
 
-
+        /*
         [HttpPost]
         public ActionResult modifier(Article article) {
             IList<string> TitlestList = repo.GetTitres();
@@ -83,6 +88,36 @@ namespace Wiki.Controllers
             int num = repo.Update(article);
             return View(article);
         }
+
+        */
+
+        [HttpPost]
+        public ActionResult modifier(Article article,string Enregistrer,string Apercu,string Supprimer) {
+            Articles repo = new Articles();
+            IList<string> TitlestList = repo.GetTitres();
+            ViewBag.Contenu = article.Contenu;
+            ViewBag.TitleList = TitlestList;
+
+            if (!string.IsNullOrEmpty(Apercu)) { 
+            
+            }
+
+            if (!string.IsNullOrEmpty(Enregistrer))
+            {
+                int num = repo.Update(article);
+            }
+
+            if (!string.IsNullOrEmpty(Supprimer))
+            {
+                int num = repo.Delete(article.Titre);
+            }
+
+            return View(article);
+        }
+
+
+
+
 
         [HttpGet]
         public ActionResult supprimer(string titre) {
@@ -99,8 +134,6 @@ namespace Wiki.Controllers
             int num = repo.Delete(article.Titre);
             return View(article);
         }
-
-
 
     }
 }

@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@using(Html.BeginForm("ajouter", "Home", FormMethod.Post)) {
+@using(Html.BeginForm("ajouter","Home",FormMethod.Post)) {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -27,19 +26,22 @@
                 @Html.TextAreaFor(model => model.Contenu, new { @style = "width:280px;height:60px" })
                 @Html.ValidationMessageFor(model => model.Contenu, "", new { @class = "text-danger" })
             </div>
-
-
+   
         </div>
-
-
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Enregistrer" class="btn btn-default" />
-            </div>
+            @Html.Partial("Apercu")
         </div>
-    </div>
-}
+
+           <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn-default" />
+                        <input type="submit" name="Apercu" value="Apercu" class="btn btn-default" />
+                    </div>
+                </div>
+       </div>
+  }
+
 
 <div>
     @Html.ActionLink("Annuler", "Index")

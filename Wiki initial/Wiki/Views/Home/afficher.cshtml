@@ -46,12 +46,11 @@
         <dt>
             @Html.DisplayNameFor(model => model.Contenu)
         </dt>
-
-
         <dd>
-            @Html.Partial("apercu");
+            @Html.TextAreaFor(model => model.Contenu, new { @style = "width:280px;height:60px" })
+
         </dd>
-    </dl>
+</dl>
 
 
 </div>

@@ -7,9 +7,8 @@
 
 <h2>supprimer</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Etes vous certain de vouloir le supprimer?</h3>
 <div>
-    <h4>Article</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Contenu)
+            @Html.TextAreaFor(model => model.Contenu, new { @style = "width:280px;height:60px" })
         </dd>
 
         <dt>

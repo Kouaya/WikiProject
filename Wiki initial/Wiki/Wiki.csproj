@@ -193,9 +193,9 @@
     <Content Include="Views\Home\invite.cshtml" />
     <Content Include="Views\Home\modifier.cshtml" />
     <Content Include="Views\Home\apercu.cshtml" />
-    <Content Include="Views\Home\ajouter.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\supprimer.cshtml" />
+    <Content Include="Views\Home\ajouter.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

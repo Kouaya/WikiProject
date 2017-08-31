@@ -8,10 +8,32 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style type="text/css">
+        .encadre {
+            height:auto;
+            width:280px;
+            border-left: 1px solid grey;
+            padding-left: 5px;
+            border-right: 1px solid grey;
+            margin-left: 10px;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+            border-width:thick;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        @Html.Raw(@ViewBag.Contenu)
-    </div>
+
+    @{
+        if (@ViewBag.Contenu != null)
+        {
+            @: <div class="encadre">@Html.Raw(@ViewBag.Contenu) </div>
+
+        }
+
+    }
+
+
+
 </body>
 </html>

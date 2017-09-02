@@ -41,11 +41,10 @@ namespace Wiki.Models.DAL
         {
             Article unArticle = new Article();            
             using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
-                //string requete = "GetTitresArticles";                   // Stored procedures
-                string requete = "SELECT * FROM Articles WHERE Titre='"+titre+"'";
+                string requete = "FindArticle";                   // Stored procedures                
                 SqlCommand cmd = new SqlCommand(requete, cnx);
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = titre;
                 try {
                    
                     cnx.Open();
@@ -67,7 +66,7 @@ namespace Wiki.Models.DAL
         }
 
 
-        // Auteurs: Vincent Simard, Phan Ngoc Long Denis, Floyd Ducharme, Pierre-Olivier Morin
+        // Auteurs: Vincent Simard, Phan Ngoc Long Denis, Floyd Ducharme, Pierre-Olivier Morin, Hilaire Tchakote
         public IList<string> GetTitres()
         {            
             using (SqlConnection cnx = new SqlConnection(ConnectionString))
@@ -137,15 +136,13 @@ namespace Wiki.Models.DAL
             int revision = Find(a.Titre).Revision;//recupération du no de révision de l'article
             int nbRevision = revision + 1;//incrémentation du nombre de révision
             int nbEnregistrement;            
-            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
-                //string requete = "UPDATE Articles SET Contenu='" + a.Contenu + "', Revision=" + nbRevision + " WHERE Titre= '"+a.Titre+"'";
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {                
                 string requete = "UpdateArticle";                   // Stored procedures
                 SqlCommand cmd = new SqlCommand(requete, cnx);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;                
                 cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = a.Titre;
                 cmd.Parameters.Add("@contenu", SqlDbType.NVarChar, 500).Value = a.Contenu;
-                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;     
-                //cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;                 
                 try {
                     cnx.Open();
                     nbEnregistrement = cmd.ExecuteNonQuery();
@@ -161,12 +158,11 @@ namespace Wiki.Models.DAL
         public int Delete(string titre)
         {
             int nbEnregistrement;            
-            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
-                string requete = "DELETE FROM Articles WHERE Titre='"+titre+"'";
-                //string requete = "GetTitresArticles";                   // Stored procedures
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {                
+                string requete = "DeleteArticle";                   // Stored procedures
                 SqlCommand cmd = new SqlCommand(requete, cnx);
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = titre;
                 try {
                     cnx.Open();
                     nbEnregistrement = cmd.ExecuteNonQuery();

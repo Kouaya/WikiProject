@@ -52,10 +52,10 @@
             @Html.ActionLink("Modifier l'article", "Modifier", new { titre = Model.Titre })
         </p>
     }
-    else {
+    else {        
         <p>L'article recherché n'existe pas.</p>
         <p>Cliquer sur le lien pour ajouter</p>
-        <p>@Html.ActionLink("Ajouter un article", "Ajouter","Home")</p>
+        <p>@Html.ActionLink("Ajouter un article", "Ajouter", "Home", new {titre=ViewBag.Ajout },null)</p>
     }
 
 </div>

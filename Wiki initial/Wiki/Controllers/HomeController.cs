@@ -7,7 +7,7 @@ using Wiki.Models.Biz;
 using Wiki.Models.DAL;
 
 namespace Wiki.Controllers
-{
+{   //Auteur: Hilaire Tchakote
     public class HomeController : Controller
     {
         Articles unArticle = new Articles();
@@ -19,7 +19,8 @@ namespace Wiki.Controllers
         public ActionResult Index(string title)
         {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière            
-            if (title != null) {                
+            if (title != null) {
+                ViewBag.Ajout = title;
                 var article = unArticle.Find(title);                
                 return View("Display", article);
             }           
@@ -29,17 +30,24 @@ namespace Wiki.Controllers
 
         //Affiche le formulaire permettant d'ajouter un article
         [HttpGet]
-        public ActionResult Ajouter() {
+        public ActionResult Ajouter(string titre) {
+            ViewBag.Ajout = titre;
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             return View();
         }
 
+
+        /*Ajoute un nouvel article.
+         *Un clic sur aperçu permet de prévisualiser le contenu de l'article à ajouter 
+         * 
+         */
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Ajouter(string apercu, Article a) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             if (!String.IsNullOrEmpty(apercu)) {                
                 ViewBag.Contenu = a.Contenu;
+                ViewBag.Ajout = a.Titre;
                 return View();
             }
             else {
@@ -48,6 +56,8 @@ namespace Wiki.Controllers
             }
         }
 
+
+        //Affiche l'article à modifier
         [HttpGet]
         public ActionResult Modifier(string titre) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
@@ -57,16 +67,20 @@ namespace Wiki.Controllers
         /*Enregistre la modification de l'article 
          *Un clic sur le bouton Aperçu permet de
          *prévisualiser la modification. 
-         * 
+         *Un clic sur supprimer pour confirmation avant la suppression définitive.
          */
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Modifier(string apercu, Article a) {
+        public ActionResult Modifier(string apercu, string supprimer, Article a) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             if (!String.IsNullOrEmpty(apercu)) {
                 //Affiche un aperçu de la modification
                 ViewBag.Contenu = a.Contenu;  
-                return View(a); 
+                return View(a);
+            }
+            else if (!String.IsNullOrEmpty(supprimer)) {
+                //Affiche l'article à supprimer et demande confirmation
+                return View("Supprimer",a);
             }
             else {
                 unArticle.Update(a);
@@ -87,23 +101,14 @@ namespace Wiki.Controllers
         public ActionResult Supprimer(string titre) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             return View(unArticle.Find(titre));
-        }
-
-        /*Un clic sur le bouton supprimer du formulaire,
-         *l'action est redigé vers la méthode HttpGet Supprimer  
-         *pour confirmation avant la suppression définitive.
-         */
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult RedirectToSuprimer(Article a) { 
-            string str = a.Titre;
-            return RedirectToAction("Supprimer", "Home", new { titre = a.Titre });
-        }
+        }        
 
         //Supprime définitivement l'article
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Supprimer(Article a) {   
+        public ActionResult Supprimer( Article a) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            string str = a.Titre;            
             unArticle.Delete(a.Titre);
             return RedirectToAction("Index");
         }

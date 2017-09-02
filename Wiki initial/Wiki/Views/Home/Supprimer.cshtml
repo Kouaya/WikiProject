@@ -5,7 +5,7 @@
 }
 
 <div class="view-position">
-    <h3>Étes-vous sûr de voilour supprimer cet article?</h3>
+    <h3>Étes-vous sûr de vouloir supprimer cet article?</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,7 +49,7 @@
 
     </dl>
 
-    @using (Html.BeginForm("Supprimer", "Home")) {
+    @using (Html.BeginForm("Supprimer", "Home", FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

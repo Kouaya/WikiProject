@@ -14,17 +14,27 @@ namespace Wiki.Controllers
     {
         Articles repo = new Articles();
 
-        [ValidateInput(false)]
-        public ActionResult Index(String operation, Article a)
+        // Get: DAL
+        public ActionResult Index(String titre) {
+            if (titre != null) {                
+                ViewBag.Article = repo.Find(titre);
+            }
+            return View(repo.GetArticles());
+        }
+
+       
+
+        /*[ValidateInput(false)]
+        public ActionResult Index(String operation, String titre) 
         {
             switch (operation)
             {
                 case "Find":
-                    if (a.Titre == null)
+                    if (titre == null)
                     {
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
-                    a = repo.Find(a.Titre);
+                    var a = repo.Find(titre);
                     if (a == null)
                     {
                         return HttpNotFound();
@@ -49,9 +59,9 @@ namespace Wiki.Controllers
                     repo.Delete(a.Titre);
                     break;
             }
-
+            ViewBag.Text = "test du ViewBag";
             return View(repo.GetArticles());
-        }
+        }*/
      
     }
 }

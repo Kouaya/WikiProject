@@ -1,0 +1,62 @@
+﻿@model Wiki.Models.Biz.Article
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<div class="view-position">
+    <h4>Article</h4>
+    <hr />
+    @if (Model.Titre != null) {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Titre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Titre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateModification)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateModification)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Revision)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Revision)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdContributeur)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdContributeur)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Contenu)
+            </dt>
+
+            <dd>
+                @Html.Raw(Model.Contenu)
+            </dd>
+        </dl>
+        <p>
+            @Html.ActionLink("Modifier l'article", "Modifier", new { titre = Model.Titre })
+        </p>
+    }
+    else {
+        <p>L'article recherché n'existe pas.</p>
+        <p>Cliquer sur le lien pour ajouter</p>
+        <p>@Html.ActionLink("Ajouter un article", "Ajouter","Home")</p>
+    }
+
+</div>
+

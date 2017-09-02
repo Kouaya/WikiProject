@@ -1,0 +1,24 @@
+
+.table-contains{
+	color:red;
+	margin-top:20px;
+	text-decoration:underline;
+}
+
+.view-position{
+	position:absolute;
+	left:500px;
+	width:40em;	
+	margin-top:50px;
+	height:100%;
+}
+
+.input-button{
+   margin-left:95px;
+}
+
+.apercu{
+	position:relative;
+	left:100px;
+	width:30em;
+}

@@ -3,88 +3,109 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Wiki.Models.Biz;
+using Wiki.Models.DAL;
 
 namespace Wiki.Controllers
 {
     public class HomeController : Controller
     {
+        Articles unArticle = new Articles();
+
+        /*Affiche la page d'accueil au démarrage. Un clic sur un article de la table de matière 
+         * ou une saisie du titre dans la zone de texte affiche l'article.
+         */
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(string title)
         {
-
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière            
+            if (title != null) {                
+                var article = unArticle.Find(title);                
+                return View("Display", article);
+            }           
+            
             return View();
         }
 
-        // GET: Home/Details/5
-        public ActionResult Details(int id)
-        {
+        //Affiche le formulaire permettant d'ajouter un article
+        [HttpGet]
+        public ActionResult Ajouter() {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             return View();
         }
 
-        // GET: Home/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Home/Create
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+        public ActionResult Ajouter(string apercu, Article a) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            if (!String.IsNullOrEmpty(apercu)) {                
+                ViewBag.Contenu = a.Contenu;
                 return View();
             }
+            else {
+                unArticle.Add(a);
+                return RedirectToAction("Display", "Home", new { titre = a.Titre });
+            }
         }
 
-        // GET: Home/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        [HttpGet]
+        public ActionResult Modifier(string titre) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            return View(unArticle.Find(titre));
         }
 
-        // POST: Home/Edit/5
+        /*Enregistre la modification de l'article 
+         *Un clic sur le bouton Aperçu permet de
+         *prévisualiser la modification. 
+         * 
+         */
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+        public ActionResult Modifier(string apercu, Article a) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            if (!String.IsNullOrEmpty(apercu)) {
+                //Affiche un aperçu de la modification
+                ViewBag.Contenu = a.Contenu;  
+                return View(a); 
             }
-            catch
-            {
-                return View();
-            }
+            else {
+                unArticle.Update(a);
+                var article = unArticle.Find(a.Titre);
+                return RedirectToAction("Display", "Home", new { titre = article.Titre });       
+            }               
         }
 
-        // GET: Home/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+        //Affiche un article
+        [HttpGet]
+        public ActionResult Display(string titre) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            return View(unArticle.Find(titre));
         }
 
-        // POST: Home/Delete/5
+        //Affiche l'article à supprimer et demande la confirmation
+        [HttpGet]
+        public ActionResult Supprimer(string titre) { 
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            return View(unArticle.Find(titre));
+        }
+
+        /*Un clic sur le bouton supprimer du formulaire,
+         *l'action est redigé vers la méthode HttpGet Supprimer  
+         *pour confirmation avant la suppression définitive.
+         */
+        [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+        public ActionResult RedirectToSuprimer(Article a) { 
+            string str = a.Titre;
+            return RedirectToAction("Supprimer", "Home", new { titre = a.Titre });
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        //Supprime définitivement l'article
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult Supprimer(Article a) {   
+            unArticle.Delete(a.Titre);
+            return RedirectToAction("Index");
         }
     }
 }

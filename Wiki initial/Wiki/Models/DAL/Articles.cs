@@ -17,12 +17,14 @@ namespace Wiki.Models.DAL
         public int Add(Article a)
         {
             int nbEnregistrement;            
-            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
-                string requete = "INSERT INTO Articles (Titre, Contenu, Revision, IdContributeur, DateModification) VALUES('" + a.Titre + "','" + a.Contenu + "', " + a.Revision + ", " + a.IdContributeur + ",'" + a.DateModification + "')";
-                //string requete = "GetTitresArticles";                   // Stored procedures
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {                
+                string requete = "AddArticle";                   // Stored procedures
                 SqlCommand cmd = new SqlCommand(requete, cnx);
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = a.Titre;
+                cmd.Parameters.Add("@contenu", SqlDbType.NVarChar, 500).Value = a.Contenu;
+                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;                 
+                
                 try {
                     cnx.Open();
                     nbEnregistrement = cmd.ExecuteNonQuery();                    
@@ -34,7 +36,7 @@ namespace Wiki.Models.DAL
             return nbEnregistrement;
         }
 
-        // Auteurs:
+        // Auteurs: hilaire Tchakote
         public Article Find(string titre)
         {
             Article unArticle = new Article();            
@@ -48,12 +50,13 @@ namespace Wiki.Models.DAL
                    
                     cnx.Open();
                     SqlDataReader dataReader = cmd.ExecuteReader();
-                    dataReader.Read();
-                    unArticle.Titre = (string)dataReader["Titre"];
-                    unArticle.Revision = (int)dataReader["Revision"];
-                    unArticle.IdContributeur = (int)dataReader["IdContributeur"];
-                    unArticle.Contenu = (string)dataReader["Contenu"];
-                    unArticle.DateModification = (DateTime)dataReader["DateModification"];
+                    if(dataReader.Read()){
+                        unArticle.Titre = (string)dataReader["Titre"];
+                        unArticle.Revision = (int)dataReader["Revision"];
+                        unArticle.IdContributeur = (int)dataReader["IdContributeur"];
+                        unArticle.Contenu = (string)dataReader["Contenu"];
+                        unArticle.DateModification = (DateTime)dataReader["DateModification"];
+                    }
                     dataReader.Close();                   
                 }
                 finally {
@@ -99,10 +102,8 @@ namespace Wiki.Models.DAL
             using (var conn = new SqlConnection(ConnectionString))
             {
                 conn.Open();
-
                 var cmd = new SqlCommand("GetArticles", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 try
                 {
                     var dataReader = cmd.ExecuteReader();                    
@@ -137,11 +138,14 @@ namespace Wiki.Models.DAL
             int nbRevision = revision + 1;//incrémentation du nombre de révision
             int nbEnregistrement;            
             using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
-                string requete = "UPDATE Article SET Contenu='" + a.Contenu + "', Revision=" + nbRevision + " WHERE Titre="+a.Titre;
-                //string requete = "GetTitresArticles";                   // Stored procedures
+                //string requete = "UPDATE Articles SET Contenu='" + a.Contenu + "', Revision=" + nbRevision + " WHERE Titre= '"+a.Titre+"'";
+                string requete = "UpdateArticle";                   // Stored procedures
                 SqlCommand cmd = new SqlCommand(requete, cnx);
-                //cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;                
+                cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = a.Titre;
+                cmd.Parameters.Add("@contenu", SqlDbType.NVarChar, 500).Value = a.Contenu;
+                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;     
+                //cmd.CommandType = System.Data.CommandType.Text;
                 try {
                     cnx.Open();
                     nbEnregistrement = cmd.ExecuteNonQuery();
@@ -176,7 +180,7 @@ namespace Wiki.Models.DAL
 
         private string ConnectionString
         {
-            get { return ConfigurationManager.ConnectionStrings["WikiCon"].ConnectionString; }
+            get { return ConfigurationManager.ConnectionStrings["Wiki"].ConnectionString; }
         }
 
     }

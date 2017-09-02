@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="view-position">
+    <p><h1>Bienvenue sur le Wiki pour un travail collaboratif.</h1></p>
+    <h2>Article</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get)) {
+
+        <p> @Html.TextBox("Title", "", new {maxlength=50, size=20, @class = "form-control" })</p>
+
+
+        <p class="input-button"><input name="Consulter" type="submit" value="Consulter"/></p>
+    }
+</div>

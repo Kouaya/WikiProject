@@ -1,14 +1,12 @@
 ﻿@model Wiki.Models.Biz.Article
 
 @{
-    ViewBag.Title = "afficher";
+    ViewBag.Title = "supprimer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>afficher</h2>
-
+<h3>Etes vous certain de vouloir le supprimer?</h3>
 <div>
-    <h4>Article</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -24,7 +22,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Contenu)
+            @Html.TextAreaFor(model => model.Contenu, new { @style = "width:280px;height:60px" })
         </dd>
 
         <dt>
@@ -52,8 +50,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Annuler", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

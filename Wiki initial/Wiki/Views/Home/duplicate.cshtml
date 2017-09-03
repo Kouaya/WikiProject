@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "duplicate";
+    Layout = null;
+}
+
+
+<h2>L'article @ViewBag.TitreArticle existe déja.Cliquez @Html.ActionLink("ici", "Index", new { Titre = @ViewBag.TitreArticle }) pour l'afficher.</h2>
+
+
+@{
+    ViewBag.Title = "invite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }

@@ -193,6 +193,7 @@ I:\Session4\Programmation Web\mandat1\wikiProjectCloned\Wiki initial\Wiki\bin\fr
 I:\Session4\Programmation Web\mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.csprojResolveAssemblyReference.cache
 I:\Session4\Programmation Web\mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.dll
 I:\Session4\Programmation Web\mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.pdb
+<<<<<<< HEAD
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\bin\Wiki.dll.config
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\bin\Wiki.dll
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\bin\Wiki.pdb
@@ -232,3 +233,5 @@ H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\bin\fr
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.csprojResolveAssemblyReference.cache
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.dll
 H:\Session4\Programmation Web\Mandat1\wikiProjectCloned\Wiki initial\Wiki\obj\Debug\Wiki.pdb
+=======
+>>>>>>> d8611c16016e3818146989263cbb0aab30745ae4

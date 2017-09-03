@@ -196,7 +196,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\supprimer.cshtml" />
     <Content Include="Views\Home\ajouter.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\duplicate.cshtml" />
+=======
+>>>>>>> d8611c16016e3818146989263cbb0aab30745ae4
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -40,9 +40,9 @@ namespace Wiki.Controllers
         /*Ajoute un nouvel article.
          *Un clic sur aperçu permet de prévisualiser le contenu de l'article à ajouter 
          * 
-         */
-        [ValidateInput(false)]
+         */       
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Ajouter(string apercu, Article a) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             if (!String.IsNullOrEmpty(apercu)) {                
@@ -50,10 +50,12 @@ namespace Wiki.Controllers
                 ViewBag.Ajout = a.Titre;
                 return View();
             }
-            else {
+            else if (ModelState.IsValid) {                 
                 unArticle.Add(a);
                 return RedirectToAction("Display", "Home", new { titre = a.Titre });
             }
+            ViewBag.Ajout = a.Titre;
+            return View();
         }
 
 
@@ -80,7 +82,9 @@ namespace Wiki.Controllers
             }
             else if (!String.IsNullOrEmpty(supprimer)) {
                 //Affiche l'article à supprimer et demande confirmation
-                return View("Supprimer",a);
+                return View("Supprimer", unArticle.Find(a.Titre));
+                //return RedirectToAction("Supprimer", new { titre = a.Titre });
+
             }
             else {
                 unArticle.Update(a);
@@ -91,16 +95,16 @@ namespace Wiki.Controllers
 
         //Affiche un article
         [HttpGet]
-        public ActionResult Display(string titre) {
+        public ActionResult Display(string title) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            return View(unArticle.Find(titre));
+            return View(unArticle.Find(title));
         }
 
         //Affiche l'article à supprimer et demande la confirmation
         [HttpGet]
-        public ActionResult Supprimer(string titre) { 
+        public ActionResult Supprimer(string title) {  
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            return View(unArticle.Find(titre));
+            return View(unArticle.Find(title));
         }        
 
         //Supprime définitivement l'article

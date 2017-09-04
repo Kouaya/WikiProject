@@ -17,7 +17,7 @@ namespace Wiki
             //    name: "Wiki",
             //    url: "Wiki/{titre}/{action}",
             //    defaults: new { controller = "Wiki", action = "Index", titre = UrlParameter.Optional }
-            //);
+            //);            
 
             routes.MapRoute(
                 name: "Default",

@@ -15,7 +15,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Titre, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control", @readonly="readonly"} })
+                    @Html.EditorFor(model => model.Titre, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.Titre, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -30,9 +30,9 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" name="Enregistrer" value="Enregistrer" formaction="Modifier" class="btn btn-default" />&ensp;&ensp;&ensp;&ensp;
-                    <input type="submit" name="supprimer" value="Supprimer" class="btn btn-default" />&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
-                    ><input type="submit" name="apercu" value="Aperçu" class="btn btn-default" />&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
+                    <input type="submit" name="Enregistrer" value="Enregistrer" formaction="Modifier" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;
+                    <input type="submit" name="supprimer" value="Supprimer" class="btn btn-info"/>&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
+                    <input type="submit" name="apercu" value="Aperçu" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
                     @Html.ActionLink("Annuler", "Display", "Home", new { titre = Model.Titre }, null)
                 </div>
             </div>

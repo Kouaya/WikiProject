@@ -95,25 +95,17 @@ namespace Wiki.Controllers
 
         //Affiche un article
         [HttpGet]
-        public ActionResult Display(string title) { 
+        public ActionResult Display(string titre) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            return View(unArticle.Find(title));
-        }
-
-        //Affiche l'article à supprimer et demande la confirmation
-        [HttpGet]
-        public ActionResult Supprimer(string title) {  
-            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            return View(unArticle.Find(title));
-        }        
+            return View(unArticle.Find(titre));
+        }               
 
         //Supprime définitivement l'article
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Supprimer( Article a) {
-            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            string str = a.Titre;            
-            unArticle.Delete(a.Titre);
+        public ActionResult Supprimer(string title) { 
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière             
+            unArticle.Delete(title);
             return RedirectToAction("Index");
         }
     }

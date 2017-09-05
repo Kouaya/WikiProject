@@ -5,7 +5,7 @@
 }
 
 <div class="view-position">
-    <h3>Étes-vous sûr de vouloir supprimer cet article?</h3>
+    <h3>êtes-vous sûr de vouloir supprimer cet article?</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -39,6 +39,7 @@
         <dd>
             @Html.DisplayFor(model => model.IdContributeur)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Contenu)
         </dt>
@@ -49,11 +50,10 @@
 
     </dl>
 
-    @using (Html.BeginForm("Supprimer", "Home", FormMethod.Post)) {
+    @using (Html.BeginForm("Supprimer","Home", new{title=Model.Titre},  FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="hidden" name="a" value="objet"/>
             <input type="submit" value="OK" class="btn btn-info" /> |
             @Html.ActionLink("Annuler la suppression", "Display", new { titre = Model.Titre }, null)
         </div>

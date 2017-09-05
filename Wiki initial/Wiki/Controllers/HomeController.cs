@@ -14,6 +14,7 @@ namespace Wiki.Controllers
 
         /*Affiche la page d'accueil au démarrage. Un clic sur un article de la table de matière 
          * ou une saisie du titre dans la zone de texte affiche l'article.
+         * Auteur: Hilaire Tchakote
          */
         // GET: Home
         public ActionResult Index(string title)
@@ -28,7 +29,9 @@ namespace Wiki.Controllers
             return View();
         }
 
-        //Affiche le formulaire permettant d'ajouter un article
+        /*Affiche le formulaire permettant d'ajouter un article
+         *Auteur: Hilaire Tchakote 
+         */
         [HttpGet]
         public ActionResult Ajouter(string titre) {
             ViewBag.Ajout = titre;
@@ -39,8 +42,9 @@ namespace Wiki.Controllers
 
         /*Ajoute un nouvel article.
          *Un clic sur aperçu permet de prévisualiser le contenu de l'article à ajouter 
-         * 
-         */       
+         *Après ajout l'article est affiché
+         *Auteur: Hilaire Tchakote
+         */
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Ajouter(string apercu, Article a) {
@@ -59,7 +63,9 @@ namespace Wiki.Controllers
         }
 
 
-        //Affiche l'article à modifier
+        /*Affiche l'article à modifier
+         *Auteur: Hilaire Tchakote
+         */
         [HttpGet]
         public ActionResult Modifier(string titre) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
@@ -70,37 +76,42 @@ namespace Wiki.Controllers
          *Un clic sur le bouton Aperçu permet de
          *prévisualiser la modification. 
          *Un clic sur supprimer pour confirmation avant la suppression définitive.
+         *Auteur: Hilaire Tchakote
          */
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Modifier(string apercu, string supprimer, Article a) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             if (!String.IsNullOrEmpty(apercu)) {
-                //Affiche un aperçu de la modification
+                //Affiche un aperçu du contenu modifié
                 ViewBag.Contenu = a.Contenu;  
                 return View(a);
             }
             else if (!String.IsNullOrEmpty(supprimer)) {
                 //Affiche l'article à supprimer et demande confirmation
                 return View("Supprimer", unArticle.Find(a.Titre));
-                //return RedirectToAction("Supprimer", new { titre = a.Titre });
-
             }
             else {
+                //Mis à jour de la modification et affichage dudit article
                 unArticle.Update(a);
                 var article = unArticle.Find(a.Titre);
                 return RedirectToAction("Display", "Home", new { titre = article.Titre });       
             }               
         }
 
-        //Affiche un article
+        /*Affiche l'article dont le titre est passé en paramètre
+         *Auteur: Hilaire Tchakote
+         */
         [HttpGet]
         public ActionResult Display(string titre) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             return View(unArticle.Find(titre));
-        }               
+        }
 
-        //Supprime définitivement l'article
+        /*Supprime définitivement dont le titre est passé en paramètre
+         *l'article et redirection à la page d'accueil
+         *Auteur: Hilaire Tchakote 
+         */
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult Supprimer(string title) { 

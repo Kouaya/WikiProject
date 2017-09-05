@@ -13,7 +13,7 @@ namespace Wiki.Models.DAL
 {
     public class Articles
     {
-        // Auteurs: Hilaire Tchakote
+        // Auteur: Hilaire Tchakote
         public int Add(Article a)
         {
             int nbEnregistrement;            
@@ -36,7 +36,7 @@ namespace Wiki.Models.DAL
             return nbEnregistrement;
         }
 
-        // Auteurs: hilaire Tchakote
+        // Auteur: hilaire Tchakote
         public Article Find(string titre)
         {
             Article unArticle = new Article();            
@@ -132,9 +132,7 @@ namespace Wiki.Models.DAL
 
         // Auteurs: Hilaire Tchakote
         public int Update(Article a)
-        {
-            int revision = Find(a.Titre).Revision;//recupération du no de révision de l'article
-            int nbRevision = revision + 1;//incrémentation du nombre de révision
+        {           
             int nbEnregistrement;            
             using (SqlConnection cnx = new SqlConnection(ConnectionString)) {                
                 string requete = "UpdateArticle";                   // Stored procedures

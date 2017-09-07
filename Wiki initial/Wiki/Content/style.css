@@ -22,3 +22,8 @@
 	left:100px;
 	width:30em;
 }
+
+.warning-msg{
+	color:red;
+	font-size:10px;
+}

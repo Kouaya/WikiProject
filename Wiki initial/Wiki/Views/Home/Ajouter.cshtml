@@ -6,7 +6,7 @@
 
 <div class="view-position">
     <h2>Ajouter</h2>
-
+    <p style="color:red;"> @ViewBag.Exist </p>
     @using (Html.BeginForm("Ajouter", "Home", FormMethod.Post)) {
         @Html.AntiForgeryToken()
 

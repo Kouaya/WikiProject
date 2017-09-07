@@ -54,9 +54,11 @@ namespace Wiki.Controllers
                 ViewBag.Ajout = a.Titre;
                 return View();
             }
-            else if (ModelState.IsValid) {                 
-                unArticle.Add(a);
-                return RedirectToAction("Display", "Home", new { titre = a.Titre });
+            else if (ModelState.IsValid) {
+                if (unArticle.Add(a) != -1) //Vérifie si le titre existe d`éjà dans la Bd. si oui, il n'est pas inserré.
+                    return RedirectToAction("Display", "Home", new { titre = a.Titre });
+                else
+                    ViewBag.Exist = "Ce titre existe déjà";
             }
             ViewBag.Ajout = a.Titre;
             return View();

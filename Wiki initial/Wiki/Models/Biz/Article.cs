@@ -19,8 +19,6 @@ namespace Wiki.Models.Biz
 
         public int IdContributeur { get; set; }
 
-        public int Quantite { get; set; }
-
         internal static void Add()
         {
             throw new NotImplementedException();

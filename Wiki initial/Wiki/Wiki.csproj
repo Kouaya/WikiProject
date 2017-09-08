@@ -201,11 +201,13 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Utilisateurs\Connexion.cshtml" />
+    <Content Include="Views\Utilisateurs\Inscription.cshtml" />
+    <Content Include="Views\Utilisateurs\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Views\" />
     <Folder Include="Resources\Models\" />
-    <Folder Include="Views\Utilisateurs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

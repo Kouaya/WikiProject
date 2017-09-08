@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Wiki.Resources.Views;
 
 namespace Wiki.Models.Biz
 {
+
     public class Article
     {
         [Required]
@@ -16,6 +18,8 @@ namespace Wiki.Models.Biz
         public int Revision { get; set; }
 
         public int IdContributeur { get; set; }
+
+        public int Quantite { get; set; }
 
         internal static void Add()
         {

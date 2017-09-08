@@ -22,7 +22,16 @@ namespace Wiki
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
 
+            HttpCookie cultureCookie = Request.Cookies["langue"];
+            if (cultureCookie != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureCookie.Value);
+                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+            }
+        }
 
     }
 }

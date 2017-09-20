@@ -5,7 +5,7 @@
 }
 
 <div class="view-position">
-    <h3>êtes-vous sûr de vouloir supprimer cet article?</h3>
+    <h3>@Wiki.Ressources.Home.Views.ConfirmationMsg</h3>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -50,12 +50,12 @@
 
     </dl>
 
-    @using (Html.BeginForm("Supprimer","Home", new{title=Model.Titre},  FormMethod.Post)) {
+    @using (Html.BeginForm(Wiki.Ressources.Home.Views.DeleteArticle,"Home", new{title=Model.Titre},  FormMethod.Post)) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="OK" class="btn btn-info" /> |
-            @Html.ActionLink("Annuler la suppression", "Display", new { titre = Model.Titre }, null)
+            @Html.ActionLink(Wiki.Ressources.Home.Views.BacktoDisplay, "Display", new { titre = Model.Titre }, null)
         </div>
     }
 </div>

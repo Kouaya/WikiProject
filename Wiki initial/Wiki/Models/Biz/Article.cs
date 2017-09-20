@@ -6,17 +6,19 @@ namespace Wiki.Models.Biz
 {
     public class Article
     {
+        [Display(Name="Title", ResourceType=typeof(Wiki.Ressources.Article.Articles))]
         [Required]
-        public string Titre { get; set; }        
+        public string Titre { get; set; }
 
-        [DisplayName("Date de modification")]
+        [Display(Name = "EditingDate", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
         public DateTime DateModification { get; set; }
 
         public int Revision { get; set; }
 
-        [DisplayName("Id contributeur")]
+        [Display(Name = "IdContributor", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
         public int IdContributeur { get; set; }
 
+        [Display(Name = "Content", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
         [Required]
         public string Contenu { get; set; }
 

@@ -10,17 +10,20 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li>@Html.ActionLink("Profil", "Profil", "Utilisateurs")  <text>&nbsp; &nbsp;</text></li>
-                    <li>@Html.ActionLink("Deconnexion", "Deconnexion", "Utilisateurs")</li>
+                @if (User.Identity.IsAuthenticated) {
+                    <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.Profile, "Profil", "Utilisateurs")  <text>&nbsp; &nbsp;</text></li>
+                    <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignOut, "Deconnexion", "Utilisateurs")</li>
                 }
-                else
-                {
-                    <li>@Html.ActionLink("Inscription", "Inscription", "Utilisateurs")   <text>&nbsp; &nbsp;</text></li>
-                    <li>@Html.ActionLink("Connexion", "Connexion", "Utilisateurs")</li>
+                else {
+                    <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignUp, "Inscription", "Utilisateurs")   <text>&nbsp; &nbsp;</text></li>
+                    <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignIn, "Connexion", "Utilisateurs")</li>
                 }
+
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEn, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en" }, null)</li>
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageFr, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "fr" }, null)</li>
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEs, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "es" }, null)</li>
             </ul>
+
         </div>
     </div>
 </div>

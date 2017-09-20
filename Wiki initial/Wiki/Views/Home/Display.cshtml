@@ -5,7 +5,7 @@
 }
 
 <div class="view-position">
-    <h4>Article</h4>
+    <h4>@Wiki.Ressources.Home.Views.Article</h4>
     <hr />
     @if (Model.Titre != null) {
         <dl class="dl-horizontal">
@@ -49,13 +49,13 @@
             </dd>
         </dl>
         <p>
-            @Html.ActionLink("Modifier l'article", "Modifier", new { titre = Model.Titre })
+            @Html.ActionLink(Wiki.Ressources.Home.Views.EditArticle, "Modifier", new { titre = Model.Titre })
         </p>
     }
     else {        
-        <p>L'article recherché n'existe pas.</p>
-        <p>Cliquer sur le lien pour ajouter</p>
-        <p>@Html.ActionLink("Ajouter un article", "Ajouter", "Home", new {titre=ViewBag.Ajout },null)</p>
+        <p>@Wiki.Ressources.Home.Views.NotFoundMsg</p>
+        <p>@Wiki.Ressources.Home.Views.ProposalToAddArticle</p>
+        <p>@Html.ActionLink(Wiki.Ressources.Home.Views.AddArticle, "Ajouter", "Home", new {titre=ViewBag.Ajout },null)</p>
     }
 
 </div>

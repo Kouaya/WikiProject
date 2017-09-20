@@ -5,7 +5,7 @@
 }
 
 <div class="view-position">
-    <h2>Ajouter</h2>
+    <h2>@Wiki.Ressources.Home.Views.TitleName</h2>
     <p style="color:red;"> @ViewBag.Exist </p>
     @using (Html.BeginForm("Ajouter", "Home", FormMethod.Post)) {
         @Html.AntiForgeryToken()
@@ -32,9 +32,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Enregistrer" class="btn btn-info" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Aperçu" name="apercu" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;
-                @Html.ActionLink("Annuler", "Index", "Home")
+                <input type="submit" value=@Wiki.Ressources.Home.Views.ButtonValue class="btn btn-info" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" value=@Wiki.Ressources.Home.Views.PreviewArticle name="apercu" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;
+                @Html.ActionLink(Wiki.Ressources.Home.Views.CancelArticle, "Index", "Home") 
             </div>
         </div>
     }    

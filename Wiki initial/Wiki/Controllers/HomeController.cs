@@ -21,7 +21,7 @@ namespace Wiki.Controllers
         {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière            
             if (title != null) {
-                ViewBag.Ajout = title;
+                ViewBag.Ajout = title;                
                 var article = unArticle.Find(title);                
                 return View("Display", article);
             }           
@@ -58,7 +58,7 @@ namespace Wiki.Controllers
                 if (unArticle.Add(a) != -1) //Vérifie si le titre existe d`éjà dans la Bd. si oui, il n'est pas inserré.
                     return RedirectToAction("Display", "Home", new { titre = a.Titre });
                 else
-                    ViewBag.Exist = "Ce titre existe déjà";
+                    ViewBag.Exist = Wiki.Ressources.Home.Views.TitleExists;
             }
             ViewBag.Ajout = a.Titre;
             return View();

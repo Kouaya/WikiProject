@@ -9,7 +9,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Modifier</h4>
+            <h4>@Wiki.Ressources.Home.Views.TitleEdit</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -30,10 +30,10 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" name="Enregistrer" value="Enregistrer" formaction="Modifier" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;
-                    <input type="submit" name="supprimer" value="Supprimer" class="btn btn-info"/>&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
-                    <input type="submit" name="apercu" value="Aperçu" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
-                    @Html.ActionLink("Annuler", "Display", "Home", new { titre = Model.Titre }, null)
+                    <input type="submit" name="Enregistrer" value=@Wiki.Ressources.Home.Views.ButtonValue formaction="Modifier" class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;
+                    <input type="submit" name="supprimer" value=@Wiki.Ressources.Home.Views.DeleteArticle class="btn btn-info"/>&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
+                    <input type="submit" name="apercu" value=@Wiki.Ressources.Home.Views.PreviewArticle class="btn btn-info" />&ensp;&ensp;&ensp;&ensp;;&ensp;&ensp;
+                    @Html.ActionLink(Wiki.Ressources.Home.Views.CancelArticle, "Display", "Home", new { titre = Model.Titre }, null)
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ namespace Wiki.Models.Biz
     public class Article
     {
         [Display(Name="Title", ResourceType=typeof(Wiki.Ressources.Article.Articles))]
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Wiki.Ressources.Article.ErrorMessage), ErrorMessageResourceName = "TitleOmission")]
         public string Titre { get; set; }
 
         [Display(Name = "EditingDate", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
@@ -19,7 +19,7 @@ namespace Wiki.Models.Biz
         public int IdContributeur { get; set; }
 
         [Display(Name = "Content", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(Wiki.Ressources.Article.ErrorMessage), ErrorMessageResourceName = "ContentOmission")]
         public string Contenu { get; set; }
 
     }

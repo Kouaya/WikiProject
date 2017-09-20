@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Models\Biz\Article.cs" />
     <Compile Include="Models\Biz\PasswordHash.cs" />
+    <Compile Include="Models\Biz\Utilisateur.cs" />
     <Compile Include="Models\DAL\Articles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ressources\Article\Articles.fr.Designer.cs">

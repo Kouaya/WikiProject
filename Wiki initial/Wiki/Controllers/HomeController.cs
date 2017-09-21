@@ -46,6 +46,7 @@ namespace Wiki.Controllers
 
         // GET: Article/Create
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             Article newArticle = new Article();
@@ -54,6 +55,7 @@ namespace Wiki.Controllers
 
         // POST: Home/Create
         [HttpPost]
+        [Authorize]
         [ValidateInput(false)]  //POUR INSCRIRE DES BALISES HTML
         public ActionResult Create(Article newArticle)
         {
@@ -73,6 +75,7 @@ namespace Wiki.Controllers
 
         // GET: Article/Edit
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(string id)
         {
             Article a = new Article();
@@ -83,6 +86,7 @@ namespace Wiki.Controllers
 
         // POST: Article/Edit
         [HttpPost]
+        [Authorize]
         [ValidateInput(false)]  //POUR INSCRIRE DES BALISES HTML
         public ActionResult Edit(string id, Article toEdit)
         {
@@ -101,6 +105,7 @@ namespace Wiki.Controllers
 
         // GET: Article/Delete
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(string id)
         {
             Article toDelete = Articles.Find(id);
@@ -110,6 +115,7 @@ namespace Wiki.Controllers
 
         // POST: Article/Delete
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(string id, FormCollection collection)
         {
             Articles.Delete(id);

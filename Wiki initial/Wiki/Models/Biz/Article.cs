@@ -1,18 +1,25 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Wiki.Resources.Views;
+using Wiki.Resources.Models;
 
 namespace Wiki.Models.Biz
 {
 
+
     public class Article
     {
-        [Required]
+
+        public int Quantite { get; set; }
+
+        [Required Display(Name = "ArticleTitre", ResourceType = typeof(StringsUtilisateurs))]
         public string Titre { get; set; }
 
-        [Required]
+
+        [Required Display(Name = "ArticleContenu", ResourceType = typeof(StringsUtilisateurs))]
         public string Contenu { get; set; }
 
+        [Display(Name = "ArticleDateModification", ResourceType = typeof(StringsUtilisateurs))]
         public DateTime DateModification { get; set; }
 
         public int Revision { get; set; }

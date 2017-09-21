@@ -1,12 +1,13 @@
 ﻿@model Wiki.Models.Biz.Article
 @using Wiki.Resources.Views
+@using Wiki.Resources.Models
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Créer Article</h4>
+        <h4>@StringsShared.LienCreer</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -33,7 +34,7 @@
     </div>
     <div>
         <hr />
-        @Html.ActionLink("Accueil", "Index", "Home", new { id = "" }, null)
+        @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)
     </div>
 }
 

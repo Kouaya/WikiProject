@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Wiki.Resources.Views
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +18,7 @@
             <br /><br />
             <div class="col-sm-3 sidenav">
                 @{
-                    <p><center>Index</center></p>
+                    <p><center>@StringsShared.TDM</center></p>
                     Html.RenderPartial("Gauche");
                 }
             </div>

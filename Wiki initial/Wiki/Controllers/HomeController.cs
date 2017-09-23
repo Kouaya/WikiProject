@@ -135,8 +135,7 @@ namespace Wiki.Controllers
         public void ChangeCulture(string Lang) {
             if (Lang != null) {
                 HttpCookie cookie = new HttpCookie("_culture");
-                cookie.Value = Lang;
-                cookie.Expires = DateTime.Now.AddDays(1);
+                cookie.Value = Lang;                
                 Response.Cookies.Add(cookie);
                 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang);
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;

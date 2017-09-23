@@ -30,8 +30,8 @@ namespace Wiki.Controllers
 
         /*
          *Affiche la page  d'authentification de l'utilisateur
-         *Si l'utilisateur est authenfié, il est    
-         *est redirigé vers l'article qu'il consultait
+         *Si l'utilisateur est authenfié, l'application s'adapte  
+         *à sa culture.
          *sinon, la page est réaffichée
          */
         [HttpPost]
@@ -39,6 +39,9 @@ namespace Wiki.Controllers
         public ActionResult Connexion(string courriel, string MDP, string str) {          
                 if (unArticle.IsAuthentified(courriel, MDP)) {
                     FormsAuthentication.SetAuthCookie(courriel, false);
+                    //L'application s'adapte à la culture de l'utilisateur                    
+                    string culture = unArticle.FindUser(courriel).Langue;
+                    ChangeCulture(culture);
                 }
                 else {
                     ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière      
@@ -79,15 +82,18 @@ namespace Wiki.Controllers
          *Affiche la page de profil 
          *l'utilisateur peut changer  
          *changer:
-         *Son nom, prenom et salangue
+         *Son nom, prenom et sa langue
          */
         [HttpGet]
         public ActionResult Profil(string Lang) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière 
             ChangeCulture(Lang);
+            Utilisateur user = unArticle.FindUser(User.Identity.Name);
             if (Lang != null)
-                ViewBag.Cookie = Lang;
-            return View(unArticle.FindUser(User.Identity.Name));
+                ViewBag.Cookie =  Lang.CompareTo((user.Langue).Trim()) != 0? (user.Langue).Trim():Lang;
+            else
+                ViewBag.Cookie = (user.Langue).Trim();                
+            return View(user);
         }
 
 
@@ -151,9 +157,9 @@ namespace Wiki.Controllers
          */
         public void ChangeCulture(string Lang) {
             if (Lang != null) {
+                Lang = Lang.Trim();
                 HttpCookie cookie = new HttpCookie("_culture");
-                cookie.Value = Lang;
-                cookie.Expires = DateTime.Now.AddDays(1);
+                cookie.Value = Lang;                
                 Response.Cookies.Add(cookie);
                 Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang);
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;

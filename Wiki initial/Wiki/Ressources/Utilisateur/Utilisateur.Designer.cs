@@ -178,11 +178,47 @@ namespace Wiki.Ressources.Utilisateur {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à New password.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Old password.
+        /// </summary>
+        public static string OldPassword {
+            get {
+                return ResourceManager.GetString("OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Password.
         /// </summary>
         public static string PassWord {
             get {
                 return ResourceManager.GetString("PassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The old password does not match with the one in the database.
+        /// </summary>
+        public static string PassWordError {
+            get {
+                return ResourceManager.GetString("PassWordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à User.
+        /// </summary>
+        public static string TitleUser {
+            get {
+                return ResourceManager.GetString("TitleUser", resourceCulture);
             }
         }
     }

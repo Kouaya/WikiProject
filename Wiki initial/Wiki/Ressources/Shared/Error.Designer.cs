@@ -61,6 +61,15 @@ namespace Wiki.Ressources.Shared {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Invalid username or password.
+        /// </summary>
+        public static string ErrorLogIn {
+            get {
+                return ResourceManager.GetString("ErrorLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An error occured while processing your request.
         /// </summary>
         public static string Text {

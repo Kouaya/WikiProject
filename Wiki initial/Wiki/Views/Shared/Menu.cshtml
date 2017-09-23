@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Prog Web II", "Index", null, new { @class = "navbar-brand" })
+            @Html.ActionLink("Prog Web II", "Index", "Home", null, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -19,9 +19,9 @@
                     <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignIn, "Connexion", "Utilisateurs")</li>
                 }
 
-                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEn, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en" }, null)</li>
-                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageFr, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "fr" }, null)</li>
-                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEs, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "es" }, null)</li>
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEn, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en" ,titre= ViewBag.article}, null)</li>
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageFr, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "fr", titre = ViewBag.article }, null)</li>
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEs, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "es", titre = ViewBag.article }, null)</li>
             </ul>
 
         </div>

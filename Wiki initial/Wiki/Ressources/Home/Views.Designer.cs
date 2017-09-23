@@ -142,6 +142,15 @@ namespace Wiki.Ressources.Home {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Edit password.
+        /// </summary>
+        public static string EditUserPW {
+            get {
+                return ResourceManager.GetString("EditUserPW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à The item you are looking for does not exist..
         /// </summary>
         public static string NotFoundMsg {
@@ -169,6 +178,15 @@ namespace Wiki.Ressources.Home {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Add.
+        /// </summary>
+        public static string SigUpButtonValue {
+            get {
+                return ResourceManager.GetString("SigUpButtonValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Edit.
         /// </summary>
         public static string TitleEdit {
@@ -187,11 +205,29 @@ namespace Wiki.Ressources.Home {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Log in.
+        /// </summary>
+        public static string TitleLogIn {
+            get {
+                return ResourceManager.GetString("TitleLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Add.
         /// </summary>
         public static string TitleName {
             get {
                 return ResourceManager.GetString("TitleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à User profile.
+        /// </summary>
+        public static string TitleUserProfile {
+            get {
+                return ResourceManager.GetString("TitleUserProfile", resourceCulture);
             }
         }
         

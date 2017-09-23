@@ -5,9 +5,9 @@
 <div class="view-position">
     <p><h1>@Wiki.Ressources.Home.Views.WelcomeMesg</h1></p>
     <h2>@Wiki.Ressources.Home.Views.Article</h2>
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get)) {
+    @using (Html.BeginForm("Display", "Home", FormMethod.Get)) {
 
-        <p> @Html.TextBox("Title", "", new {maxlength=50, size=20, @class = "form-control" })</p>
+        <p> @Html.TextBox("Titre", "", new {maxlength=50, size=20, @class = "form-control" })</p>
 
 
         <p class="input-button"><input name="Consulter" type="submit" value=@Wiki.Ressources.Home.Views.ConsultArticle class="btn btn-info" /></p>

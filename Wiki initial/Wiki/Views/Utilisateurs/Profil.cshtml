@@ -1,0 +1,69 @@
+﻿@model Wiki.Models.Biz.Utilisateur
+
+
+<div class="view-position">
+
+    @using (Html.BeginForm("Profil", "Utilisateurs", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>@Wiki.Ressources.Home.Views.TitleUserProfile</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomFamille, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NomFamille, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NomFamille, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Langue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if ("es".Equals(ViewBag.Cookie)) {
+                        @Html.DropDownList("Language", new List<SelectListItem> {
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEn, Value="en"},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEs, Value="es", Selected=true},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageFr, Value="fr"}}, new { @class = "form-control" });
+                        @Html.ValidationMessageFor(model => model.Langue, "", new { @class = "text-danger" })
+                    }
+                    else if ("fr".Equals(ViewBag.Cookie)) {
+                        @Html.DropDownList("Language", new List<SelectListItem> {
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEn, Value="en"},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEs, Value="es"},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageFr, Value="fr", Selected=true}}, new { @class = "form-control" });
+                        @Html.ValidationMessageFor(model => model.Langue, "", new { @class = "text-danger" })
+                    }
+                    else {
+                        @Html.DropDownList("Language", new List<SelectListItem> {
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEn, Value="en", Selected=true},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageEs, Value="es"},
+                                                       new SelectListItem { Text=Wiki.Ressources.Shared.Menu.LanguageFr, Value="fr"}}, new { @class = "form-control" });
+                        @Html.ValidationMessageFor(model => model.Langue, "", new { @class = "text-danger" })
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="@Wiki.Ressources.Home.Views.ButtonValue" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink(Wiki.Ressources.Home.Views.EditUserPW, "ModifierMdp", "Utilisateurs")
+    </div>
+</div>

@@ -148,15 +148,27 @@
     <value>La contraseña debe tener al menos 6 caracteres</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>Appellido</value>
+    <value>Nombre</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Idioma</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Nombre</value>
+    <value>Appellido</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nueva contraseña</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Antigua contraseña</value>
   </data>
   <data name="PassWord" xml:space="preserve">
     <value>Contraseña</value>
+  </data>
+  <data name="PassWordError" xml:space="preserve">
+    <value>La contraseña antigua no coincide con la de la base de datos</value>
+  </data>
+  <data name="TitleUser" xml:space="preserve">
+    <value>Usuario</value>
   </data>
 </root>

@@ -156,7 +156,19 @@
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Old password</value>
+  </data>
   <data name="PassWord" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PassWordError" xml:space="preserve">
+    <value>The old password does not match with the one in the database</value>
+  </data>
+  <data name="TitleUser" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

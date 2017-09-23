@@ -20,7 +20,7 @@
                 <h3 class="table-contains">@Wiki.Ressources.Shared._Layout.Title</h3>
                 @foreach (string titre in ViewBag.TitleList) {
                     <ul>
-                        <li>@Html.ActionLink(titre, "Index", "Home", new { title=titre},null)</li>                        
+                        <li>@Html.ActionLink(titre, "Display", "Home", new { titre=titre},null)</li>                        
                     </ul>
                 }
                 

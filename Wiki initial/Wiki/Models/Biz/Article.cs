@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Wiki.Models.Biz
 {
@@ -19,7 +20,7 @@ namespace Wiki.Models.Biz
         public int IdContributeur { get; set; }
 
         [Display(Name = "Content", ResourceType = typeof(Wiki.Ressources.Article.Articles))]
-        [Required(ErrorMessageResourceType = typeof(Wiki.Ressources.Article.ErrorMessage), ErrorMessageResourceName = "ContentOmission")]
+        [Required(ErrorMessageResourceType = typeof(Wiki.Ressources.Article.ErrorMessage), ErrorMessageResourceName = "ContentOmission")]        
         public string Contenu { get; set; }
 
     }

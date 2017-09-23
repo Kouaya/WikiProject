@@ -15,7 +15,8 @@ namespace Wiki.Models.DAL
     {
         // Auteur: Hilaire Tchakote
         public int Add(Article a)
-        {
+        {   
+            
             int nbEnregistrement;            
             using (SqlConnection cnx = new SqlConnection(ConnectionString)) {                
                 string requete = "AddArticle";                   // Stored procedures
@@ -23,7 +24,7 @@ namespace Wiki.Models.DAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = a.Titre;
                 cmd.Parameters.Add("@contenu", SqlDbType.NVarChar, 500).Value = a.Contenu;
-                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;                 
+                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = a.IdContributeur;                 
                 
                 try {
                     cnx.Open();
@@ -140,7 +141,7 @@ namespace Wiki.Models.DAL
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;                
                 cmd.Parameters.Add("@Titre", SqlDbType.NVarChar, 100).Value = a.Titre;
                 cmd.Parameters.Add("@contenu", SqlDbType.NVarChar, 500).Value = a.Contenu;
-                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = 1;                 
+                cmd.Parameters.Add("@IdContributeur", SqlDbType.Int).Value = a.IdContributeur;                 
                 try {
                     cnx.Open();
                     nbEnregistrement = cmd.ExecuteNonQuery();
@@ -170,6 +171,142 @@ namespace Wiki.Models.DAL
                 }
             }
             return nbEnregistrement;            
+        }
+
+        // Auteurs: hilaire Tchakote
+        public int AddUser(Utilisateur user) {
+            int nbEnregistrement;
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "AddUtilisateur";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Courriel", SqlDbType.NVarChar, 50).Value = user.Courriel;
+                cmd.Parameters.Add("@MDP", SqlDbType.NVarChar, 70).Value = PasswordHash.CreateHash( user.MDP);
+                cmd.Parameters.Add("@Prenom", SqlDbType.NVarChar, 50).Value = user.Prenom;
+                cmd.Parameters.Add("@NomFamille", SqlDbType.NVarChar, 50).Value = user.NomFamille;
+                cmd.Parameters.Add("@Langue", SqlDbType.NChar, 5).Value = user.Langue;
+
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;           
+        }
+
+        // Auteurs: hilaire Tchakote
+        public Utilisateur FindUser(string email) {
+            Utilisateur user;
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "FindUtilisateurByCourriel";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.Parameters.Add("@Courriel", SqlDbType.NVarChar, 50).Value = email;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                try {
+                    cnx.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (!dataReader.HasRows) {
+                        dataReader.Close();                        
+                    }
+                    dataReader.Read();
+                    user = new Utilisateur {
+                        Langue = (string)dataReader["Langue"],
+                        NomFamille = (string)dataReader["NomFamille"],
+                        Prenom = (string)dataReader["Prenom"],
+                        Id=(int)dataReader["Id"],
+                        MDP=(string)dataReader["MDP"]
+                    };
+                } 
+                finally {
+                    cnx.Close();
+                }
+            }
+            return user;
+        }
+
+        //Hilaire Tchakote
+        public int UpDateUserProfile(Utilisateur user){ 
+            int nbEnregistrement;
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "UpdateUtilisateur";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@NomFamille", SqlDbType.NVarChar, 50).Value = user.NomFamille;
+                cmd.Parameters.Add("@Prenom", SqlDbType.NVarChar, 50).Value = user.Prenom;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = user.Id;               
+                cmd.Parameters.Add("@Langue", SqlDbType.NChar, 5).Value = user.Langue;
+
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;            
+        }
+
+        /*
+         *Modifie le mot de passe de l'utilisateur 
+         * Auteur: Hilaire Tchakote
+         * 
+         */
+        public int UpDateUserPassWord(int Id, string newPassWord) {
+            int nbEnregistrement;
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "UpdateMotDePasse";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+                cmd.Parameters.Add("@nouveauMDP", SqlDbType.NVarChar, 70).Value = PasswordHash.CreateHash(newPassWord);                     
+
+                try {
+                    cnx.Open();
+                    nbEnregistrement = cmd.ExecuteNonQuery();
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return nbEnregistrement;              
+        }
+
+
+        /*
+         *Authentification de l'utilisateur 
+         *param:courriel, type string
+         *param:password, type string 
+         *Auteur: hilaire Tchakote
+         */
+        public bool IsAuthentified(string courriel, string password) {
+            bool isauthentified = false;            
+            using (SqlConnection cnx = new SqlConnection(ConnectionString)) {
+                string requete = "FindUtilisateurByCourriel";                   // Stored procedures
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.Parameters.Add("@Courriel", SqlDbType.NVarChar, 50).Value = courriel;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                try {
+                    cnx.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (!dataReader.HasRows) {
+                        dataReader.Close();
+                        return isauthentified;
+                    }
+                    dataReader.Read();
+                    var hashPassword = (string)dataReader["MDP"];
+                    isauthentified = PasswordHash.ValidatePassword(password, hashPassword);                    
+                }
+                finally {
+                    cnx.Close();
+                }
+            }
+            return isauthentified;
         }
 
         private string ConnectionString

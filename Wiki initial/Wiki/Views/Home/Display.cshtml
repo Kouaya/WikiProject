@@ -48,15 +48,17 @@
                 @Html.Raw(Model.Contenu)
             </dd>
         </dl>
-        <p>
-            @Html.ActionLink(Wiki.Ressources.Home.Views.EditArticle, "Modifier", new { titre = Model.Titre })
-        </p>
+        if (User.Identity.IsAuthenticated) {
+            <p>
+                @Html.ActionLink(Wiki.Ressources.Home.Views.EditArticle, "Modifier", new { titre = Model.Titre })
+            </p>
+        }
     }
-    else {        
-        <p>@Wiki.Ressources.Home.Views.NotFoundMsg</p>
-        <p>@Wiki.Ressources.Home.Views.ProposalToAddArticle</p>
-        <p>@Html.ActionLink(Wiki.Ressources.Home.Views.AddArticle, "Ajouter", "Home", new {titre=ViewBag.Ajout },null)</p>
+    else {
+        <p style="color:red;">@Wiki.Ressources.Home.Views.NotFoundMsg</p>
+        if (User.Identity.IsAuthenticated) {
+            <p>@Wiki.Ressources.Home.Views.ProposalToAddArticle</p>
+            <p>@Html.ActionLink(Wiki.Ressources.Home.Views.AddArticle, "Ajouter", "Home", new { titre = ViewBag.Ajout }, null)</p>
+        }
     }
-
 </div>
-

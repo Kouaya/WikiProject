@@ -144,6 +144,9 @@
   <data name="EditArticle" xml:space="preserve">
     <value>Editar artículo</value>
   </data>
+  <data name="EditUserPW" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
   <data name="NotFoundMsg" xml:space="preserve">
     <value>El elemento que busca no existe.</value>
   </data>
@@ -153,14 +156,23 @@
   <data name="ProposalToAddArticle" xml:space="preserve">
     <value>Haga clic en el enlace para agregar.</value>
   </data>
+  <data name="SigUpButtonValue" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
   <data name="TitleEdit" xml:space="preserve">
     <value>Cambio</value>
   </data>
   <data name="TitleExists" xml:space="preserve">
     <value>Este título ya existe</value>
   </data>
+  <data name="TitleLogIn" xml:space="preserve">
+    <value>acceder</value>
+  </data>
   <data name="TitleName" xml:space="preserve">
     <value>Añadir</value>
+  </data>
+  <data name="TitleUserProfile" xml:space="preserve">
+    <value>Perfil del usuario</value>
   </data>
   <data name="WelcomeMesg" xml:space="preserve">
     <value>Bienvenido a Wiki para un trabajo colaborativo.</value>

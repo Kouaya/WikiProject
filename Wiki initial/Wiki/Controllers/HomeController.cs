@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Wiki.Models.Biz;
@@ -17,15 +18,10 @@ namespace Wiki.Controllers
          * Auteur: Hilaire Tchakote
          */
         // GET: Home
-        public ActionResult Index(string title)
-        {
-            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière            
-            if (title != null) {
-                ViewBag.Ajout = title;                
-                var article = unArticle.Find(title);                
-                return View("Display", article);
-            }           
-            
+        public ActionResult Index(string titre, string Lang)
+        {   
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière 
+            ChangeCulture(Lang);            
             return View();
         }
 
@@ -33,9 +29,10 @@ namespace Wiki.Controllers
          *Auteur: Hilaire Tchakote 
          */
         [HttpGet]
-        public ActionResult Ajouter(string titre) {
+        public ActionResult Ajouter(string titre, string Lang) {
             ViewBag.Ajout = titre;
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            ChangeCulture(Lang);
             return View();
         }
 
@@ -55,10 +52,11 @@ namespace Wiki.Controllers
                 return View();
             }
             else if (ModelState.IsValid) {
+                a.IdContributeur = unArticle.FindUser(User.Identity.Name).Id;
                 if (unArticle.Add(a) != -1) //Vérifie si le titre existe d`éjà dans la Bd. si oui, il n'est pas inserré.
-                    return RedirectToAction("Display", "Home", new { titre = a.Titre });
+                    return RedirectToAction("Display", "Home", new { titre = a.Titre }); 
                 else
-                    ViewBag.Exist = Wiki.Ressources.Home.Views.TitleExists;
+                    ViewBag.Exist = Wiki.Ressources.Home.Views.TitleExists; 
             }
             ViewBag.Ajout = a.Titre;
             return View();
@@ -69,9 +67,12 @@ namespace Wiki.Controllers
          *Auteur: Hilaire Tchakote
          */
         [HttpGet]
-        public ActionResult Modifier(string titre) {
+        public ActionResult Modifier(string titre, string Lang) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
-            return View(unArticle.Find(titre));
+            ViewBag.article = titre;
+            ChangeCulture(Lang);
+           return View(unArticle.Find(titre));
+                          
         }
 
         /*Enregistre la modification de l'article 
@@ -95,9 +96,10 @@ namespace Wiki.Controllers
             }
             else {
                 //Mis à jour de la modification et affichage dudit article
+                a.IdContributeur = unArticle.FindUser(User.Identity.Name).Id;
                 unArticle.Update(a);
                 var article = unArticle.Find(a.Titre);
-                return RedirectToAction("Display", "Home", new { titre = article.Titre });       
+                return RedirectToAction("Display", "Home", new { titre = article.Titre });        
             }               
         }
 
@@ -105,8 +107,10 @@ namespace Wiki.Controllers
          *Auteur: Hilaire Tchakote
          */
         [HttpGet]
-        public ActionResult Display(string titre) { 
+        public ActionResult Display(string titre, string Lang) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            ChangeCulture(Lang);
+            ViewBag.article = titre;
             return View(unArticle.Find(titre));
         }
 
@@ -116,10 +120,27 @@ namespace Wiki.Controllers
          */
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult Supprimer(string title) { 
+        public ActionResult Supprimer(string titre) { 
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière             
-            unArticle.Delete(title);
+            unArticle.Delete(titre);
             return RedirectToAction("Index");
+        }
+
+
+        /*
+         *Gestion de la langue d'affichage 
+         * 
+         * 
+         */
+        public void ChangeCulture(string Lang) {
+            if (Lang != null) {
+                HttpCookie cookie = new HttpCookie("_culture");
+                cookie.Value = Lang;
+                cookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(cookie);
+                Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(Lang);
+                Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+            }
         }
     }
 }

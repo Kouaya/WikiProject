@@ -8,10 +8,10 @@ using Wiki.Models.Biz;
 
 namespace Wiki.Models.DAL
 {
-    public class Utilisateurs
+    public class Utilisateurs 
     {
 
-        public void Add(Utilisateur u)
+         public void Add(Utilisateur u)
         {
             using (SqlConnection connexion = new SqlConnection(ConnectionString))
             {
@@ -65,7 +65,7 @@ namespace Wiki.Models.DAL
 
         public void Update(int Id, string NouveauMDP)
         {
-            using (SqlConnection connexion = new SqlConnection(ConnectionString))
+             using (SqlConnection connexion = new SqlConnection(ConnectionString))
             {
                 connexion.Open();
 

@@ -23,16 +23,16 @@
                 }
             </div>
 
-            <div class="col-sm-9">
-                @RenderBody()
+                <div class="col-sm-9">
+                    @RenderBody()
+                </div>
             </div>
+            <footer class="container-fluid">
+                <hr />
+                <p><center>&copy; @DateTime.Now.Year - Wiki Roy</center></p>
+            </footer>
         </div>
-        <footer class="container-fluid">
-            <hr />
-            <p><center>&copy; @DateTime.Now.Year - Wiki Roy</center></p>
-        </footer>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>

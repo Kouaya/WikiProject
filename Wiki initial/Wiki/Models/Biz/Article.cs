@@ -6,10 +6,10 @@ using Wiki.Resources.Models;
 namespace Wiki.Models.Biz
 {
 
-
+    
     public class Article
     {
-
+        
         public int Quantite { get; set; }
 
         [Required Display(Name = "ArticleTitre", ResourceType = typeof(StringsUtilisateurs))]

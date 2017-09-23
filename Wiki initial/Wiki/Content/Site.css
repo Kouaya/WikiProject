@@ -26,3 +26,13 @@ select {
 .invisible {
     display: none;
 }
+
+.col-sm-3 sidenav, .tdm-a {
+    border-style: double;
+    border-color:black;
+}
+
+.dropdown-menu li{
+    background-color:black;
+    color:darkgrey;
+}

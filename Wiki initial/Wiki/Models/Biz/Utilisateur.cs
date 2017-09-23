@@ -19,26 +19,26 @@ namespace Wiki.Models.Biz
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Le prénom est obligatoire")]
-        //ErrorMessageResourceName="ErreurPrenom", ErrorMessageResourceType = typeof(StringsUtilisateur)) 
-        //Display(Name = "Prenom", ResourceType = typeof(StringsUtilisateurs))]
+        [Required   (ErrorMessage = "Le prénom est obligatoire")]
+                    //ErrorMessageResourceName="ErreurPrenom", ErrorMessageResourceType = typeof(StringsUtilisateur)) 
+                    //Display(Name = "Prenom", ResourceType = typeof(StringsUtilisateurs))]
         public string Prenom { get; set; }
 
-        [Required(ErrorMessage = "Le nom de famille est obligatoire")]
-        //ErrorMessageResourceName="ErreurNom", ErrorMessageResourceType = typeof(StringsUtilisateur)),
-        //Display(Name = "NomDeFamille", ResourceType = typeof(StringsUtilisateurs))]
+        [Required   (ErrorMessage = "Le nom de famille est obligatoire")]
+                    //ErrorMessageResourceName="ErreurNom", ErrorMessageResourceType = typeof(StringsUtilisateur)),
+                    //Display(Name = "NomDeFamille", ResourceType = typeof(StringsUtilisateurs))]
         public string NomFamille { get; set; }
 
         [Required(ErrorMessage = "Le courriel est obligatoire"), EmailAddress]
-        //ErrorMessageResourceName="ErreurCourriel", ErrorMessageResourceType = typeof(StringsUtilisateur)), 
-        //Display(Name = "Courriel", ResourceType = typeof(StringsUtilisateurs))]
+                    //ErrorMessageResourceName="ErreurCourriel", ErrorMessageResourceType = typeof(StringsUtilisateur)), 
+                    //Display(Name = "Courriel", ResourceType = typeof(StringsUtilisateurs))]
         public string Courriel { get; set; }
 
-        [Required(ErrorMessage = "Le mot de passe est obligatoire")
+        [Required   (ErrorMessage = "Le mot de passe est obligatoire")
                     //ErrorMessageResourceName="ErreurMDP",
                     //ErrorMessageResourceType = typeof(StringsUtilisateur))
                     Range(6, (double)decimal.MaxValue)]
-        //Display(Name = "MdP", ResourceType = typeof(StringsUtilisateurs))]
+                    //Display(Name = "MdP", ResourceType = typeof(StringsUtilisateurs))]
         public string MDP { get; set; }
 
         public string Langue { get; set; }
@@ -100,7 +100,7 @@ namespace Wiki.Models.Biz
                 return true;
             else
                 return false;
-        }
+        }   
 
         static public string CrypterMDPSHA256(string mdp)
         {

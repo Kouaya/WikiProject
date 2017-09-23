@@ -7,9 +7,8 @@ using Wiki.Models.Biz;
 
 namespace Wiki.Models.DAL
 {
-    public static class Articles
-    {
-        // Auteurs: Ren S. Roy
+    public static class Articles {
+
         public static int Add(Article a)
         {
             String comm = ConnectionString;
@@ -39,7 +38,7 @@ namespace Wiki.Models.DAL
             return IdArticle;
         }
 
-        // Auteurs: Ren S. Roy
+
         public static Article Find(string titre)
         {
             using (SqlConnection cnx = new SqlConnection(ConnectionString))
@@ -76,7 +75,6 @@ namespace Wiki.Models.DAL
         }
 
 
-        // Auteurs: EXISTING
         public static IList<string> GetTitres()
         {
             //string cStr = ConfigurationManager.ConnectionStrings["Wiki"].ConnectionString;
@@ -107,7 +105,6 @@ namespace Wiki.Models.DAL
             }
         }
 
-        // Auteurs: EXISTING
         public static IList<Article> GetArticles()
         {
             using (var conn = new SqlConnection(ConnectionString))
@@ -142,8 +139,7 @@ namespace Wiki.Models.DAL
                 }
             }
         }
-
-        // Auteurs: Ren S. Roy
+        
         public static int Update(Article a)
         {
             int modifiedLine = 0;
@@ -175,7 +171,6 @@ namespace Wiki.Models.DAL
             }
         }
 
-        // Auteurs: Ren S. Roy
         public static int Delete(string titre)
         {
             using (SqlConnection conx = new SqlConnection(ConnectionString))
@@ -194,6 +189,7 @@ namespace Wiki.Models.DAL
                 return x;
             }
         }
+
 
 
         private static string ConnectionString

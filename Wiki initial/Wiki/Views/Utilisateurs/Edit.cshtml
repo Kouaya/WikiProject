@@ -1,0 +1,61 @@
+﻿@using System.Web.UI.WebControls
+@using Wiki.Models.DAL
+@model Wiki.Models.DAL.Utilisateurs
+@model Wiki.Models.Views.UtilisateursModifierMDP
+
+
+@using (Html.BeginForm("Edit", "Utilisateur", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal well" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Bienvenue! @Model.NomUtilisateur</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UtilisateurID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NomUtilisateur, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NomUtilisateur, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NomUtilisateur, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HashMotDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 disabled">
+            @Html.PasswordFor(model => model.HashMotDePasse, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.HashMotDePasse, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Courriel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Courriel, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Courriel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            @Html.ActionLink("Cancel", "Index", "Pokemon", htmlAttributes: new { @class = "btn btn-link" })
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "Utilisateur", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal well", onsubmit = "return confirm('Certain Certain?');" }))
+{
+    @Html.HiddenFor(model => model.UtilisateurID)
+    <button type="submit" class="btn btn-danger">Supprimer votre compte?</button>
+}
+
+@section scripts {
+    function obtenirConfirmation() {
+    window.confirm("sometext");
+    }
+}
+
+<div>
+    @Html.ActionLink("Retourner à l'accueil", "Home", "Index")
+</div>

@@ -37,7 +37,7 @@
                 @Html.ValidationMessageFor(model => model.Langue, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@StringsShared.BoutonSauvegarder" class="btn btn-default" />
@@ -47,7 +47,7 @@
 }
 
 <div>
-    @Html.ActionLink(@StringsShared.LienModifierMDP, "ModifierMDP", "Utilisateurs")
+    @Html.ActionLink(@StringsShared.LienModifierMDP, "ModifierMDP", "Utilisateurs") 
     <text>&nbsp; &nbsp;</text>
     @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home")
 </div>

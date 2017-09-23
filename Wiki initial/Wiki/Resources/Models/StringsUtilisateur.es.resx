@@ -123,18 +123,6 @@
   <data name="Courriel" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="ErreurCourriel" xml:space="preserve">
-    <value>El correo electrónico es obligatorio.</value>
-  </data>
-  <data name="ErreurMDP" xml:space="preserve">
-    <value>La contraseña es obligatoria.</value>
-  </data>
-  <data name="ErreurNom" xml:space="preserve">
-    <value>El apellido es obligatorio.</value>
-  </data>
-  <data name="ErreurPrenom" xml:space="preserve">
-    <value>El nombre es obligatorio.</value>
-  </data>
   <data name="Langue" xml:space="preserve">
     <value>Idioma</value>
   </data>
@@ -161,5 +149,17 @@
   </data>
   <data name="TitreConnexion" xml:space="preserve">
     <value>Conexión</value>
+  </data>
+  <data name="ErreurCourriel" xml:space="preserve">
+    <value>El correo electrónico es obligatorio.</value>
+  </data>
+  <data name="ErreurMDP" xml:space="preserve">
+    <value>La contraseña es obligatoria.</value>
+  </data>
+  <data name="ErreurNom" xml:space="preserve">
+    <value>El apellido es obligatorio.</value>
+  </data>
+  <data name="ErreurPrenom" xml:space="preserve">
+    <value>El nombre es obligatorio.</value>
   </data>
 </root>

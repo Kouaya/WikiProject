@@ -25,26 +25,25 @@
         </th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titre)
-            </td>
-            <td>
-                @item.Contenu.Substring(0, (100 < item.Contenu.Length ? 100 : item.Contenu.Length))
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Revision)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdContributeur)
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titre)
+        </td>
+        <td>
+            @item.Contenu.Substring(0, (100 < item.Contenu.Length ? 100 : item.Contenu.Length))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Revision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateModification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdContributeur)
+        </td>
+    </tr>
+}
 
 </table>
 @using (Html.BeginForm())

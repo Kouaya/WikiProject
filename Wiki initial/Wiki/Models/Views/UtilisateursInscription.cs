@@ -24,7 +24,7 @@ namespace Wiki.Models.Views
         public string Prenom { get; set; }
 
         [MaxLength(50), Display(Name = "NomDeFamille", ResourceType = typeof(StringsUtilisateur))]
-        public string NomFamille { get; set; }
+        public string NomFamille { get; set;}
 
         [Required, MaxLength(50), EmailAddress, Display(Name = "Courriel", ResourceType = typeof(StringsUtilisateur))]
         public string Courriel { get; set; }

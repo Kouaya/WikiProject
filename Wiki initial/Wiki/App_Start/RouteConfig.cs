@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Wiki
@@ -11,13 +7,7 @@ namespace Wiki
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            //routes.MapRoute(
-            //    name: "Wiki",
-            //    url: "Wiki/{titre}/{action}",
-            //    defaults: new { controller = "Wiki", action = "Index", titre = UrlParameter.Optional }
-            //);
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");         
 
             routes.MapRoute(
                 name: "Default",

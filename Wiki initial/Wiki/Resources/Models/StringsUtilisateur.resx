@@ -123,18 +123,6 @@
   <data name="Courriel" xml:space="preserve">
     <value>Courriel</value>
   </data>
-  <data name="ErreurCourriel" xml:space="preserve">
-    <value>Le courriel est obligatoire.</value>
-  </data>
-  <data name="ErreurMDP" xml:space="preserve">
-    <value>Le mot de passe est obligatoire.</value>
-  </data>
-  <data name="ErreurNom" xml:space="preserve">
-    <value>Le nom de famille est obligatoire.</value>
-  </data>
-  <data name="ErreurPrenom" xml:space="preserve">
-    <value>Le prénom est obligatoire.</value>
-  </data>
   <data name="Image" xml:space="preserve">
     <value>Image</value>
   </data>
@@ -167,5 +155,17 @@
   </data>
   <data name="TitreConnexion" xml:space="preserve">
     <value>Connexion</value>
+  </data>
+  <data name="ErreurCourriel" xml:space="preserve">
+    <value>Le courriel est obligatoire.</value>
+  </data>
+  <data name="ErreurMDP" xml:space="preserve">
+    <value>Le mot de passe est obligatoire.</value>
+  </data>
+  <data name="ErreurNom" xml:space="preserve">
+    <value>Le nom de famille est obligatoire.</value>
+  </data>
+  <data name="ErreurPrenom" xml:space="preserve">
+    <value>Le prénom est obligatoire.</value>
   </data>
 </root>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data.Common;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
+using System.Data.Entity;
 using Wiki.Models.DAL;
 using Wiki.Models.Biz;
 using Wiki.Models.Views;
@@ -68,7 +70,7 @@ namespace Wiki.Controllers
                 {
                     ViewBag.error = "Error";
                     return View();
-                }
+                }  
             }
             return this.RedirectToAction("Index", "Home");
         }
@@ -92,8 +94,7 @@ namespace Wiki.Controllers
         [HttpPost]
         public ActionResult Inscription(UtilisateursInscription ui, string returnURL = "")
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 try
                 {
                     if (ui.MDP == ui.ConfirmerMDP)
@@ -156,12 +157,11 @@ namespace Wiki.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                else
-                {
+                else {
                     ViewBag.error = "error";
                     return this.RedirectToAction("Index", "Home");
                 }
-
+                
             }
             else
             {
@@ -177,8 +177,7 @@ namespace Wiki.Controllers
         }
 
         [HttpPost]
-        public ActionResult ModifierMDP(UtilisateursModifierMDP um)
-        {
+        public ActionResult ModifierMDP(UtilisateursModifierMDP um) {
             ViewBag.error = "";
 
             if (ModelState.IsValid)
@@ -189,8 +188,8 @@ namespace Wiki.Controllers
 
                     if (PasswordHash.ValidatePassword(um.AncienMDP, utilisateur.MDP))
                     {
-                        utilisateur.MDP = PasswordHash.CreateHash(um.NouveauMDP);
-                        utilisateurs.Update(utilisateur.Id, utilisateur.MDP);
+                    utilisateur.MDP = PasswordHash.CreateHash(um.NouveauMDP);
+                    utilisateurs.Update(utilisateur.Id, utilisateur.MDP);
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -208,8 +207,7 @@ namespace Wiki.Controllers
         }
 
         [HttpGet]
-        public ActionResult Deconnexion()
-        {
+        public ActionResult Deconnexion() {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }

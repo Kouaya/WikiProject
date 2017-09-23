@@ -3,23 +3,23 @@
 @model Wiki.Models.Biz.Article
 
 @{
-    ViewBag.Title = "Index";
+ViewBag.Title = "Index";
 }
 
 @if (ViewBag.Status == "null")
 {
-    <center><h2>@StringsShared.Bienvenue</h2></center>
-    <hr>
+<center><h2>@StringsShared.Bienvenue</h2></center>
+<hr>
 
-    <p>
-        @StringsShared.Intro
-    </p>
+<p>
+    @StringsShared.Intro
+</p>
 
-    <form action="/Home/index" method="get">
-        <label for="txtNomArticle">@StringsShared.FormRechercher</label>
-        <input type="text" name="id" id="id" />
-        <input type="submit" value="@StringsShared.FormSubmit" />
-    </form>
+<form action="/Home/index" method="get">
+    <label for="txtNomArticle">@StringsShared.FormRechercher</label>
+    <input type="text" name="id" id="id" />
+    <input type="submit" value="@StringsShared.FormSubmit" />
+</form>
 }
 
 @if (ViewBag.Status == "found")
@@ -27,7 +27,7 @@
     <h2>@Html.DisplayFor(model => model.Titre)</h2>
     <hr />
 
-
+    
     <p>@StringsShared.LabelTitre : <br />@Html.DisplayFor(model => model.Titre)</p>
     <br />
     <p>@StringsShared.LabelContenu : <br />@Html.Raw(Model.Contenu)</p>
@@ -37,7 +37,7 @@
     <p>@StringsShared.LabelRevision : <br />@Html.DisplayFor(model => model.Revision)</p>
     <br />
     <p>@StringsShared.LabelContributeur : <br />@Html.DisplayFor(model => model.IdContributeur)</p>
-
+    
     <hr />
     if (User.Identity.IsAuthenticated)
     {
@@ -48,7 +48,7 @@
     else
     {
         @Html.ActionLink(@StringsShared.LienConnexion, "Connexion", "Utilisateurs")
-
+        
     }
     <text>&nbsp; &nbsp;</text>
     @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)
@@ -75,7 +75,7 @@
     }
     else
     {
-        @Html.ActionLink(@StringsShared.ConnexionCompte, "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })
+        @Html.ActionLink(@StringsShared.ConnexionCompte, "Create", "Home", new { id = Model.Titre }, new { @class = "classname" })    
     }
     <text>&nbsp; &nbsp;</text>
     @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)

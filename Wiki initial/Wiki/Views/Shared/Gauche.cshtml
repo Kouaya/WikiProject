@@ -1,6 +1,7 @@
 ﻿@using Wiki.Models.DAL
 
-@foreach (var Article in Articles.GetTitres()){
+
+@foreach (var Article in Articles.GetTitres()) {
     @Html.ActionLink(Article, "Index", "Home", new { id = Article }, null)
     <br />
 }

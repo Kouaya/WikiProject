@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Mvc;
 using Wiki.Models.DAL;
 using Wiki.Models.Biz;
 
@@ -12,8 +9,6 @@ namespace Wiki.Controllers
 {
     public class DALController : Controller
     {
-        //Articles repo = new Articles();
-
         [ValidateInput(false)]
         public ActionResult Index(String operation, Article a)
         {
@@ -38,7 +33,7 @@ namespace Wiki.Controllers
                         Articles.Update(a);
                     }
                     break;
-                case "Add":
+                case "Create":
                     if (ModelState.IsValid)
                     {
                         a.IdContributeur = 1;
@@ -52,6 +47,7 @@ namespace Wiki.Controllers
 
             return View(Articles.GetArticles());
         }
-     
+
+
     }
 }

@@ -2,11 +2,10 @@
 @using Wiki.Resources.Views
 @using Wiki.Resources.Models
 
-
 @Html.BeginForm(){
 @Html.AntiForgeryToken()
 <div class="form-horizontal">
-    <h4>Éditer</h4>
+    <h4>@StringsShared.Edit</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -34,7 +33,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>Article</h4>
+        <h4>@StringsShared.Article</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -55,13 +54,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Sauvegarder" class="btn btn-default" />
+                <input type="submit" value="@StringsShared.BoutonSauvegarder" class="btn btn-default" />
             </div>
         </div>
 
     </div>
     <div>
         <hr />
-        @Html.ActionLink("Accueil", "Index", "Home", new { id = "" }, null)
+        @Html.ActionLink(@StringsShared.LienAccueil, "Index", "Home", new { id = "" }, null)
     </div>
 }

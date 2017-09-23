@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 using System.Web;
-using System.Web.Mvc;
 using System.Web.Security;
-using System.Data.Entity;
 using Wiki.Models.DAL;
 using Wiki.Models.Biz;
 using Wiki.Models.Views;

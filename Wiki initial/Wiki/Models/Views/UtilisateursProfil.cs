@@ -13,7 +13,7 @@ namespace Wiki.Models.Views
     public class UtilisateursProfil
     {
 
-        public static string[] Langues = { "fr-CA", "en-CA", "es-MX" };
+        public static string[] Langues = { "fr-CA", "en-CA", "es-MX", "pt-PT" };
 
         //public static string[] Langues = Utilisateur.Langues;
 

@@ -56,7 +56,7 @@ namespace Wiki.Controllers
         // POST: Home/Create
         [HttpPost]
         [Authorize]
-        [ValidateInput(false)]  //POUR INSCRIRE DES BALISES HTML
+        [ValidateInput(false)]  //HTML RAW PARAM
         public ActionResult Create(Article newArticle)
         {
 
@@ -65,6 +65,7 @@ namespace Wiki.Controllers
                 newArticle.IdContributeur = 1;
                 Articles.Add(newArticle);
 
+                // On affiche un message
                 return this.RedirectToAction("Index");
             }
             else
@@ -73,7 +74,7 @@ namespace Wiki.Controllers
             }
         }
 
-        // GET: Article/Edit
+        // GET: Article/Edit/5
         [HttpGet]
         [Authorize]
         public ActionResult Edit(string id)
@@ -81,20 +82,20 @@ namespace Wiki.Controllers
             Article a = new Article();
             Article toEdit = Articles.Find(id);
 
+            // On affiche un message
             return View(toEdit);
         }
 
-        // POST: Article/Edit
+        // POST: Article/Edit/5
         [HttpPost]
         [Authorize]
-        [ValidateInput(false)]  //POUR INSCRIRE DES BALISES HTML
+        [ValidateInput(false)]  //HTML RAW PARAM
         public ActionResult Edit(string id, Article toEdit)
         {
             if (ModelState.IsValid)
             {
                 toEdit.IdContributeur = 1;
                 Articles.Update(toEdit);
-
                 return RedirectToAction("Index");
             }
             else
@@ -103,23 +104,21 @@ namespace Wiki.Controllers
             }
         }
 
-        // GET: Article/Delete
+        // GET: Article/Delete/5
         [HttpGet]
         [Authorize]
         public ActionResult Delete(string id)
         {
             Article toDelete = Articles.Find(id);
-
             return View(toDelete);
         }
 
-        // POST: Article/Delete
+        // POST: Article/Delete/5
         [HttpPost]
         [Authorize]
         public ActionResult Delete(string id, FormCollection collection)
         {
             Articles.Delete(id);
-
             return RedirectToAction("Index");
         }
 

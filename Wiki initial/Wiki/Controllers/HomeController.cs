@@ -18,7 +18,7 @@ namespace Wiki.Controllers
          * Auteur: Hilaire Tchakote
          */
         // GET: Home
-        public ActionResult Index(string titre, string Lang)
+        public ActionResult Index(string Lang)
         {   
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière 
             ChangeCulture(Lang);            
@@ -92,7 +92,7 @@ namespace Wiki.Controllers
             }
             else if (!String.IsNullOrEmpty(supprimer)) {
                 //Affiche l'article à supprimer et demande confirmation
-                return View("Supprimer", unArticle.Find(a.Titre));
+                return RedirectToAction("Supprimer","Home", new{titre=a.Titre});
             }
             else {
                 //Mis à jour de la modification et affichage dudit article
@@ -111,6 +111,16 @@ namespace Wiki.Controllers
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             ChangeCulture(Lang);
             ViewBag.article = titre;
+            return View(unArticle.Find(titre));
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Supprimer(string titre, string Lang) {
+            ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
+            ViewBag.article = titre;
+            ChangeCulture(Lang);
             return View(unArticle.Find(titre));
         }
 

@@ -111,7 +111,10 @@ namespace Wiki.Controllers
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière
             ChangeCulture(Lang);
             ViewBag.article = titre;
-            return View(unArticle.Find(titre));
+            if (titre != null)
+                return View(unArticle.Find(titre));
+            else
+                return View(unArticle.Find(""));
         }
 
 

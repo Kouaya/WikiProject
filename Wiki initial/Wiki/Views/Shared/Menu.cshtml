@@ -17,13 +17,13 @@
                 else {
                     <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignUp, "Inscription", "Utilisateurs")   <text>&nbsp; &nbsp;</text></li>
                     <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.SignIn, "Connexion", "Utilisateurs")</li>
-                }
-
-                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEn, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en" ,titre= ViewBag.article}, null)</li>
+                }                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEn, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "en", titre = ViewBag.article }, null)</li>
                 <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageFr, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "fr", titre = ViewBag.article }, null)</li>
                 <li>@Html.ActionLink(Wiki.Ressources.Shared.Menu.LanguageEs, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { lang = "es", titre = ViewBag.article }, null)</li>
             </ul>
-
         </div>
     </div>
 </div>

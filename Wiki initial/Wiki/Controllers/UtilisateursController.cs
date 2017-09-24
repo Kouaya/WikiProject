@@ -73,8 +73,11 @@ namespace Wiki.Controllers
         public ActionResult Inscription(Utilisateur user) {
             ViewBag.TitleList = unArticle.GetTitres();//Affichage des titres dans la table de matière   
             user.Langue = Request.Form["Language"].ToString();
-            unArticle.AddUser(user);            
-            return View("Connexion");
+            if (ModelState.IsValid) {
+                unArticle.AddUser(user);
+                return View("Connexion");
+            }
+            return View();
         }
 
 
@@ -104,8 +107,10 @@ namespace Wiki.Controllers
          */
         [HttpPost]
         public ActionResult Profil(Utilisateur user) {
-            user.Langue = Request.Form["Language"];            
-            int nbEnreg = unArticle.UpDateUserProfile(user);
+            int nbEnreg;
+            user.Langue = Request.Form["Language"];
+            if(ModelState.IsValid)
+                nbEnreg = unArticle.UpDateUserProfile(user);
             //return RedirectToAction("Index", "Home");
             return RedirectToAction("Profil", new { Lang = user.Langue });
         }

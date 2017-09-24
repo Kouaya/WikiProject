@@ -61,7 +61,7 @@ namespace Wiki.Ressources.Shared {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Table of content.
+        ///   Recherche une chaîne localisée semblable à Table of contents.
         /// </summary>
         public static string Title {
             get {
